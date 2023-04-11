@@ -1,0 +1,169 @@
+{
+  "main": {
+    "id": "340f058a8cd7537c",
+    "type": "split",
+    "children": [
+      {
+        "id": "efc62575c565e49f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "eb4a36449638f29b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Выжимка с Q&A Cloud.com.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "043b7105c1f5b60f",
+    "type": "split",
+    "children": [
+      {
+        "id": "62f2ceba82bc29fd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a46e805d207d9658",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5a909e1bd6c70694",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9a65086708486a51",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 260.5
+  },
+  "right": {
+    "id": "4025bda6269081d9",
+    "type": "split",
+    "children": [
+      {
+        "id": "1ffbad7b0d2695b0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5b22e0e3770a1503",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Выжимка с Q&A Cloud.com.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ebdcf68d0c0dd4da",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Выжимка с Q&A Cloud.com.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0fe3bc13cedeef92",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "a1e8c7ca32dcfdbb",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Выжимка с Q&A Cloud.com.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "eb4a36449638f29b",
+  "lastOpenFiles": [
+    "Labyrinth/Основные механики и идеи.md",
+    "Labyrinth/Чат-бот.md",
+    "Labyrinth/Концепция.md",
+    "Labyrinth/Сюжет/История мира.md",
+    "Labyrinth/Сюжет/Краткий сюжет.md",
+    "Labyrinth/Струткура проекта.canvas",
+    "Labyrinth/Сюжет/Акты/Первый акт.md",
+    "Компании/Компания по Пиратам/Пираты - фрактальный лабиринт.md",
+    "Компании/Компания по Пиратам/Отывок.md",
+    "Мысли и идеи/Идеи/Живой скелет.md",
+    "Мысли и идеи/Идеи/Счетовод.md",
+    "Atadiaba's Labyrinth/Основные механики и идеи.md",
+    "Atadiaba's Labyrinth/Струткура проекта.canvas",
+    "Atadiaba's Labyrinth/Концепция.md",
+    "Atadiaba's Labyrinth/Сюжет/проба_2.png",
+    "Atadiaba's Labyrinth/Сюжет/Краткий сюжет.md",
+    "Atadiaba's Labyrinth/Сюжет/История мира.md"
+  ]
+}
