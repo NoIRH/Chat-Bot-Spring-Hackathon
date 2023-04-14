@@ -1,0 +1,40 @@
+{
+	"nodes":[
+		{"type":"text","text":"Connect to chat","id":"e3c354cbf70d38b7","x":80,"y":-20,"width":250,"height":60},
+		{"type":"text","text":"Common chat","id":"4fb68400be16d63b","x":-45,"y":180,"width":250,"height":60},
+		{"type":"text","text":"Chat user","id":"2bb357b56ac0c540","x":205,"y":180,"width":250,"height":60},
+		{"type":"text","text":"Bot API","id":"7ae495a2713c3f97","x":80,"y":-160,"width":250,"height":60},
+		{"type":"text","text":"Button  \"Start\"","id":"3b598080a3eb0366","x":730,"y":380,"width":250,"height":60},
+		{"type":"text","text":"Get statistics","id":"be0e505ace1d22a4","x":730,"y":460,"width":250,"height":60},
+		{"type":"text","text":"Get rate","id":"fc229f363fac039b","x":730,"y":540,"width":250,"height":60},
+		{"type":"text","text":"Actions","id":"d433a8245cacffb4","x":730,"y":610,"width":250,"height":60},
+		{"type":"text","text":"Mini - games (list)","id":"1ad7ae38991db0ab","x":730,"y":680,"width":250,"height":60},
+		{"type":"text","text":"Dangeon","id":"003a2b427399f1fa","x":730,"y":760,"width":250,"height":60},
+		{"type":"text","text":"Button  \"Help\"","id":"28cbf2f2dc0519b9","x":80,"y":760,"width":250,"height":60},
+		{"type":"text","text":"Creat events\n- Target\n- Count ball\n- Type\n- Name","id":"30b2b00c9cb62796","x":1020,"y":120,"width":250,"height":180},
+		{"id":"caa0c11ad32c8b28","x":1540,"y":120,"width":250,"height":180,"type":"text","text":"End event\n- С победителем\n- Без победителя"},
+		{"type":"text","text":"Announcement events\n- Only Admin","id":"e17c98e44f8b1136","x":-800,"y":380,"width":250,"height":120},
+		{"id":"c49d164c5051fc55","x":-340,"y":380,"width":250,"height":60,"type":"text","text":"Сообщение о выполнении"},
+		{"type":"text","text":"Button \"Registration\"","id":"37ec00d146ccb710","x":1020,"y":380,"width":250,"height":60},
+		{"type":"text","text":"Call for a fight (list)","id":"cefa70d9b86fa52f","x":1020,"y":610,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"8daf27877883a0f2","fromNode":"7ae495a2713c3f97","fromSide":"bottom","toNode":"e3c354cbf70d38b7","toSide":"top"},
+		{"id":"3343537161dbb53c","fromNode":"e3c354cbf70d38b7","fromSide":"bottom","toNode":"2bb357b56ac0c540","toSide":"top"},
+		{"id":"b8aacbbcb311586a","fromNode":"e3c354cbf70d38b7","fromSide":"bottom","toNode":"4fb68400be16d63b","toSide":"top"},
+		{"id":"6423960cc5dc254d","fromNode":"3b598080a3eb0366","fromSide":"right","toNode":"37ec00d146ccb710","toSide":"left"},
+		{"id":"da367c63a8dd9379","fromNode":"4fb68400be16d63b","fromSide":"bottom","toNode":"e17c98e44f8b1136","toSide":"top"},
+		{"id":"2383b4b6a7883a94","fromNode":"2bb357b56ac0c540","fromSide":"right","toNode":"30b2b00c9cb62796","toSide":"left"},
+		{"id":"7dbdb94d2441df1b","fromNode":"2bb357b56ac0c540","fromSide":"bottom","toNode":"28cbf2f2dc0519b9","toSide":"top"},
+		{"id":"a099d2028b10d318","fromNode":"4fb68400be16d63b","fromSide":"bottom","toNode":"28cbf2f2dc0519b9","toSide":"top"},
+		{"id":"31816f3cf6b348cd","fromNode":"2bb357b56ac0c540","fromSide":"bottom","toNode":"be0e505ace1d22a4","toSide":"left"},
+		{"id":"0326bea0c25901d1","fromNode":"2bb357b56ac0c540","fromSide":"bottom","toNode":"3b598080a3eb0366","toSide":"left"},
+		{"id":"bdf3b43ac0ee0b0b","fromNode":"2bb357b56ac0c540","fromSide":"bottom","toNode":"fc229f363fac039b","toSide":"left"},
+		{"id":"a115c7176f5e777a","fromNode":"2bb357b56ac0c540","fromSide":"bottom","toNode":"1ad7ae38991db0ab","toSide":"left"},
+		{"id":"f13b71a0adb12cdc","fromNode":"2bb357b56ac0c540","fromSide":"bottom","toNode":"003a2b427399f1fa","toSide":"left"},
+		{"id":"edeea662e9c2b468","fromNode":"d433a8245cacffb4","fromSide":"right","toNode":"cefa70d9b86fa52f","toSide":"left"},
+		{"id":"853404faaed0ab70","fromNode":"2bb357b56ac0c540","fromSide":"bottom","toNode":"d433a8245cacffb4","toSide":"left"},
+		{"id":"31c03c415bc393c1","fromNode":"30b2b00c9cb62796","fromSide":"right","toNode":"caa0c11ad32c8b28","toSide":"left"},
+		{"id":"4b658f50cfb7cfef","fromNode":"4fb68400be16d63b","fromSide":"bottom","toNode":"c49d164c5051fc55","toSide":"top"}
+	]
+}

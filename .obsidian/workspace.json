@@ -1,0 +1,161 @@
+{
+  "main": {
+    "id": "b819f0560a9476d2",
+    "type": "split",
+    "children": [
+      {
+        "id": "534ef9bfdd4ee394",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5cd7a2ae0ad49823",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Documentation/Struct app.canvas",
+                "viewState": {
+                  "x": -105.53693885980192,
+                  "y": 450.0452044114727,
+                  "zoom": -1.6666666666666665
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9618e8eee66c6b90",
+    "type": "split",
+    "children": [
+      {
+        "id": "49ebb4798292cc0e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "49792ae403692667",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c8375136d34bfb82",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "48bf8323e0052d57",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fb1cc7c70d85825a",
+    "type": "split",
+    "children": [
+      {
+        "id": "a796413f9d222b0b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a6dcf43801fb098b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Documentation/Struct app.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "91f45307e55670e1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Documentation/Struct app.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "48da372c817965a2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "5693815a9568243b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Documentation/Struct app.canvas"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "5cd7a2ae0ad49823",
+  "lastOpenFiles": [
+    "Pasted image 20230412232055.png",
+    "Documentation/DB.md",
+    "Documentation/Struct app.canvas",
+    "Documentation/Functions TeleBot API.canvas",
+    "Documentation/Выжимка с Q&A Cloud.com.md",
+    "README.md"
+  ]
+}
