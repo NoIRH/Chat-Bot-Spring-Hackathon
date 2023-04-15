@@ -4,21 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "534ef9bfdd4ee394",
+        "id": "bd00a1bcfa452d2c",
         "type": "tabs",
         "children": [
           {
-            "id": "5cd7a2ae0ad49823",
+            "id": "261034cc46201ed6",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Documentation/Struct app.canvas",
-                "viewState": {
-                  "x": -105.53693885980192,
-                  "y": 450.0452044114727,
-                  "zoom": -1.6666666666666665
-                }
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -72,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 259.5
   },
   "right": {
     "id": "fb1cc7c70d85825a",
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Documentation/Struct app.canvas",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Documentation/Struct app.canvas",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Documentation/Struct app.canvas"
+                "file": "README.md"
               }
             }
           }
@@ -149,12 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5cd7a2ae0ad49823",
+  "active": "261034cc46201ed6",
   "lastOpenFiles": [
-    "Pasted image 20230412232055.png",
-    "Documentation/DB.md",
+    "2023-04-15.md",
     "Documentation/Struct app.canvas",
     "Documentation/Functions TeleBot API.canvas",
+    "Pasted image 20230412232055.png",
+    "Documentation/DB.md",
     "Documentation/Выжимка с Q&A Cloud.com.md",
     "README.md"
   ]
