@@ -1,25 +1,18 @@
 {
   "main": {
-    "id": "340f058a8cd7537c",
+    "id": "4dad1f530b7c49b8",
     "type": "split",
     "children": [
       {
-        "id": "efc62575c565e49f",
+        "id": "a970829808e53297",
         "type": "tabs",
         "children": [
           {
-            "id": "eb4a36449638f29b",
+            "id": "3de9702a05771835",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Struct app.canvas",
-                "viewState": {
-                  "x": -510.5026393375756,
-                  "y": 1228.8944302040686,
-                  "zoom": -3.166666666666667
-                }
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -28,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "043b7105c1f5b60f",
+    "id": "df263424792b5196",
     "type": "split",
     "children": [
       {
-        "id": "62f2ceba82bc29fd",
+        "id": "99a988832db3c60e",
         "type": "tabs",
         "children": [
           {
-            "id": "a46e805d207d9658",
+            "id": "ba8630459c46bc20",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -46,7 +39,7 @@
             }
           },
           {
-            "id": "5a909e1bd6c70694",
+            "id": "c7729f8fd1324394",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -61,7 +54,7 @@
             }
           },
           {
-            "id": "9a65086708486a51",
+            "id": "c2ce23fbe4ce5e0b",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -72,23 +65,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 260.5
+    "width": 300
   },
   "right": {
-    "id": "4025bda6269081d9",
+    "id": "813ee78a175cd057",
     "type": "split",
     "children": [
       {
-        "id": "1ffbad7b0d2695b0",
+        "id": "c5679b810bd772cb",
         "type": "tabs",
         "children": [
           {
-            "id": "5b22e0e3770a1503",
+            "id": "9a7ce2aba336d188",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Struct app.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,19 +92,18 @@
             }
           },
           {
-            "id": "ebdcf68d0c0dd4da",
+            "id": "131985daa4441cce",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Struct app.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "0fe3bc13cedeef92",
+            "id": "de4f502ab4ed4087",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -123,13 +114,11 @@
             }
           },
           {
-            "id": "a1e8c7ca32dcfdbb",
+            "id": "e62462fe1e6a3ad8",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Struct app.canvas"
-              }
+              "state": {}
             }
           }
         ]
@@ -149,27 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "eb4a36449638f29b",
-  "lastOpenFiles": [
-    "Functions TeleBot API.canvas",
-    "DB.md",
-    "Выжимка с Q&A Cloud.com.md",
-    "Labyrinth/Основные механики и идеи.md",
-    "Labyrinth/Чат-бот.md",
-    "Labyrinth/Концепция.md",
-    "Labyrinth/Сюжет/История мира.md",
-    "Labyrinth/Сюжет/Краткий сюжет.md",
-    "Labyrinth/Струткура проекта.canvas",
-    "Labyrinth/Сюжет/Акты/Первый акт.md",
-    "Компании/Компания по Пиратам/Пираты - фрактальный лабиринт.md",
-    "Компании/Компания по Пиратам/Отывок.md",
-    "Мысли и идеи/Идеи/Живой скелет.md",
-    "Мысли и идеи/Идеи/Счетовод.md",
-    "Atadiaba's Labyrinth/Основные механики и идеи.md",
-    "Atadiaba's Labyrinth/Струткура проекта.canvas",
-    "Atadiaba's Labyrinth/Концепция.md",
-    "Atadiaba's Labyrinth/Сюжет/проба_2.png",
-    "Atadiaba's Labyrinth/Сюжет/Краткий сюжет.md",
-    "Atadiaba's Labyrinth/Сюжет/История мира.md"
-  ]
+  "active": "3de9702a05771835",
+  "lastOpenFiles": []
 }
