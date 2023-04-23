@@ -38,7 +38,6 @@ namespace Controllers.Controllers
         public List<BaseEvent> GetBaseEvents() => _dbContext.BaseEvents.Include(b => b.Contexts).ToList();
         public List<GameEvent> GetGameEvents() => _dbContext.GameEvents.Include(b => b.Contexts).ToList();
         public List<WorkEvent> GetWorkEvents() => _dbContext.WorkEvents.Include(b => b.Contexts).ToList();
-        public List<BaseScenario> GetBaseScenarios() => _dbContext.Scenarios.ToList();
         public List<BaseCharacter> GetBaseCharacters() => _dbContext.Characters.ToList();
         public List<Hero> GetHeroes() => _dbContext.Heroes.ToList();
         public List<Enemy> GetEnemies() => _dbContext.Enemyes.ToList();
