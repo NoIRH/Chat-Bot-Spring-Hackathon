@@ -7,15 +7,8 @@ using System.Threading.Tasks;
 
 namespace Controllers.Controllers
 {
-    public class GameController
+    public class GameController : BaseController
     {
-        public List<User> Users { get; set; }
-       
-
-        public GameController() { }
-        public GameController(DBController dB) 
-        {
-
-        }
+        public GameController(DBController db) : base(db) { }
     }
 }
