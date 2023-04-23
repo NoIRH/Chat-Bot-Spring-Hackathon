@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameEngine.GameModels.CharDescription;
+using GameEngine.GameModels.Items;
 
 namespace GameEngine.GameModels.DbView
 {

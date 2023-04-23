@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine.GameModels.CharDescription
+namespace Controllers.Controllers
 {
-    public class Armor : Item
+    internal class DBController
     {
     }
 }

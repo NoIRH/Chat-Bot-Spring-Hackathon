@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controllers
+namespace Controllers.Contexts
 {
     public class BaseContext
     {
         public int Id { get; set; }
         public User User { get; set; }
-        public List<BaseEvent> Events { get; set; } 
+        public List<BaseEvent> Events { get; set; }
     }
 }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine.GameModels.CharDescription
+namespace GameEngine.GameModels.Items
 {
-    public class Jeverly : Item
+    public class Armor : Item
     {
-
+        public bool IsWeared { get; set; }
     }
 }

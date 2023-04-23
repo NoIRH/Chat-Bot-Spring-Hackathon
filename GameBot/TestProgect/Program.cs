@@ -1,9 +1,8 @@
 ﻿
-using DBServises.Servises;
 using GameEngine.GameModels;
 using GameEngine.GameModels.CharDescription;
 
-
+/*
 using (ApplicationContext db = new ApplicationContext())
 {
     Hero hero = new Hero();
@@ -24,3 +23,10 @@ using (ApplicationContext db = new ApplicationContext())
         Console.WriteLine($"{u.Id}.");
     }
 }
+*/
+Random r = new Random();
+for (int i = 0; i < 10; i++)
+{
+    if(r.Next(0,3) == 3) Console.WriteLine("gggg");
+}
+Console.WriteLine("end");

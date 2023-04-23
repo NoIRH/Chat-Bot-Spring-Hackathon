@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine.GameModels.CharDescription
+namespace GameEngine.GameModels.Skills
 {
-    public class Potion : Item
+    public class DebuffSkill : Skill
     {
-
     }
 }

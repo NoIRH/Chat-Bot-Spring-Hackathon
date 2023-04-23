@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameEngine.GameModels.Skills;
 
-namespace Controllers
+namespace GameEngine.GameModels
 {
-    internal class WorkController
+    public class HealSkill : Skill
     {
     }
 }
