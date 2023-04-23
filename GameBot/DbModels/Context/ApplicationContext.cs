@@ -1,6 +1,7 @@
 ﻿using BotClient.Scenarios;
 using Controllers.Contexts;
 using Controllers.DbView;
+using Controllers.EventSystem;
 using GameEngine;
 using GameEngine.Dungeons;
 using GameEngine.GameModels;
@@ -49,6 +50,9 @@ namespace DBServises.Servises
         public DbSet<WorkContext> WorkContexts { get; set; }
         public DbSet<UserEvent> UserEvents { get; set; }   
         public DbSet<BaseScenario> Scenarios { get; set; }  
+        public DbSet<BaseEvent> BaseEvents { get; set; }
+        public DbSet<GameEvent> GameEvents { get; set; }
+        public DbSet<WorkEvent> WorkEvents { get; set; }
         public ApplicationContext()
         {
             Database.EnsureDeleted();

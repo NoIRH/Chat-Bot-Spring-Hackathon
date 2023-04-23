@@ -28,7 +28,7 @@ namespace Controllers.Controllers
         public List<GameContext> GetGameContexts() => _dbContext.GameContexts.Include(b => b.Events).ToList();
         public List<WorkContext> GetWorkContexts() => _dbContext.WorkContexts.Include(b => b.Events).ToList();
         public List<UserEvent> GetUserEvents() => _dbContext.UserEvents.ToList();
-      // public List<BaseEvent> 
+      //  public List<BaseEvent> GetBaseEvents() => _dbContext.BaseEve.Include(b => b.)
 
     }
 }
