@@ -207,12 +207,12 @@ public class UpdateHandler : IUpdateHandler
 
         await _botClient.AnswerCallbackQueryAsync(
             callbackQueryId: callbackQuery.Id,
-            text: $"Received {callbackQuery.Data}",
+            text: $"Received {callbackQuery.Data} jkkjbbbk",
             cancellationToken: cancellationToken);
 
         await _botClient.SendTextMessageAsync(
             chatId: callbackQuery.Message!.Chat.Id,
-            text: $"Received {callbackQuery.Data}",
+            text: $"ok",
             cancellationToken: cancellationToken);
     }
 

@@ -1,5 +1,4 @@
-﻿using BotClient.Scenarios;
-using Controllers.Contexts;
+﻿using Controllers.Contexts;
 using Controllers.DbView;
 using Controllers.EventSystem;
 using GameEngine;
@@ -85,7 +84,7 @@ namespace DBServises.Servises
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=31428");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=1463638");
         }
     }
 }
