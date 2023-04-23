@@ -20,6 +20,9 @@ namespace GeneralLibrary.BaseModels
         public Hero? Hero { get; set; }
 
         public List<Achievement> Achievements { get; set; } = new();
+        // NEED TO FINISH 
+
+
         public int ScenarioId { get; set; }
 
         public int CurrentScenarioStep { get; set; }    

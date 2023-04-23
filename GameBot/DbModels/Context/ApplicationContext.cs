@@ -15,12 +15,6 @@ namespace DBServises.Servises
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext()
-        {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
-        }
-
         public DbSet<User> Users { get; set; }  
 
         public DbSet<Role> Roles { get; set; } 
@@ -86,10 +80,14 @@ namespace DBServises.Servises
         public DbSet<GameEvent> GameEvents { get; set; }
 
         public DbSet<WorkEvent> WorkEvents { get; set; }
-
+        public ApplicationContext()
+        {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=1463638");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=31428");
         }
     }
 }
