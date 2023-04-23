@@ -1,8 +1,6 @@
 ﻿using BotClient.Scenarios;
-using Telegram.Bot.Types;
 using Telegram.Bot;
-using Telegram.Bot.Types.Enums;
-using System.Threading;
+using Telegram.Bot.Types;
 
 namespace Controllers.Scenarios
 {
