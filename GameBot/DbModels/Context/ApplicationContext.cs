@@ -5,7 +5,6 @@ using GameEngine;
 using GameEngine.Dungeons;
 using GameEngine.GameModels;
 using GameEngine.GameModels.CharDescription;
-using GameEngine.GameModels.DbView;
 using GameEngine.GameModels.Items;
 using GameEngine.GameModels.Skills;
 using GeneralLibrary.BaseModels;
@@ -24,7 +23,7 @@ namespace DBServises.Servises
         public DbSet<Role> Roles { get; set; } 
         public DbSet<Statistic> Statistics { get; set; }
         public DbSet<Achievement> Achievements { get; set; }   
-        public DbSet<UserAchievement> UserAchievements { get; set; }
+       // public DbSet<UserAchievement> UserAchievements { get; set; }
         public DbSet<Rate> Rate { get; set; }
         public DbSet<Clan> Clans { get; set; }  
         public DbSet<BaseCharacter> Characters { get; set; }
@@ -38,7 +37,6 @@ namespace DBServises.Servises
         public DbSet<Weapon> Weapons { get; set; } 
         public DbSet<Jeverly> Jeverlies { get; set; }
         public DbSet<Potion> Potions { get; set; }  
-        public DbSet<InventoryItems> InventoryItems { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Fight> Fights { get; set; }    
         public DbSet<Skill> Skills { get; set; }

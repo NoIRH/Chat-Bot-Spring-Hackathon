@@ -9,7 +9,6 @@ namespace Controllers.Contexts
 {
     public class WorkContext : BaseContext
     {
-        public List<BaseEvent> CurrentEvents { get; set; }
         public bool IsRegistration { get; set; }
     }
 }

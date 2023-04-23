@@ -6,6 +6,8 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.InlineQueryResults;
 using Telegram.Bot.Types.ReplyMarkups;
+using Controllers.Controllers;
+using DBServises.Servises;
 
 namespace BotClient.Services;
 
@@ -13,11 +15,17 @@ public class UpdateHandler : IUpdateHandler
 {
     private readonly ITelegramBotClient _botClient;
     private readonly ILogger<UpdateHandler> _logger;
+    private readonly DBController DBController;
+    private readonly GameController gameController;
 
     public UpdateHandler(ITelegramBotClient botClient, ILogger<UpdateHandler> logger)
     {
         _botClient = botClient;
         _logger = logger;
+        // подключение бд 
+        DBController = new DBController(new ApplicationContext());
+        gameController = new GameController(DBController);
+
     }
 
     public async Task HandleUpdateAsync(ITelegramBotClient _, Update update, CancellationToken cancellationToken)

@@ -19,7 +19,7 @@ namespace GameEngine.GameModels.CharDescription
         public int Id { get; set; }
         public int CurrentWeight { get; set; }
         public int MaxWeight { get; set; }
-        public List<Item> Items { get; set; }
+        public List<Item> Items { get; set; } = new();
 
     }
 }

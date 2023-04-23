@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Controllers.Controllers
 {
-    internal class WorkController
+    public class WorkController
     {
     }
 }

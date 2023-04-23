@@ -16,8 +16,11 @@ namespace GeneralLibrary.BaseModels
         public string Department { get; set; }
         
         public Hero? Hero { get; set; }
-        public List<Achievement> Achievements { get; set;}
+        public List<Achievement> Achievements { get; set; } = new();
         // NEED TO FINISH 
-
+        public int ScenarioId { get; set; }
+        public int CurrentScenarioStep { get; set; }    
+        public int ClanId { get; set; }
+        public Clan? Clan { get; set; }
     }
 }

@@ -9,9 +9,9 @@ namespace GameEngine.GameModels.CharDescription
 {
     public class Equipment
     {
-        public int Id { get; set; } 
-        public List<Armor> Armors { get; set; } 
-        public List<Weapon> Weapons { get; set; }
-        public List<Jeverly> Jeverlys { get; set; }
+        public int Id { get; set; }
+        public List<Armor> Armors { get; set; } = new();
+        public List<Weapon> Weapons { get; set; } = new();
+        public List<Jeverly> Jeverlys { get; set; } = new();
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Controllers.EventSystem
 {
-    internal class GameEvent
+    public class GameEvent : BaseEvent
     {
     }
 }

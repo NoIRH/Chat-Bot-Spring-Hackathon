@@ -12,6 +12,6 @@ namespace Controllers.Contexts
     {
         public int Id { get; set; }
         public User User { get; set; }
-        public List<BaseEvent> Events { get; set; }
+        public List<BaseEvent> Events { get; set; } = new();
     }
 }

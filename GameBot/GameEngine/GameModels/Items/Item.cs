@@ -15,6 +15,6 @@ namespace GameEngine.GameModels.Items
         public int Weight { get; set; }
         public int Price { get; set; }
         public Status ModStatus { get; set; }
-
+        public List<Inventory> Inventories { get; set; } = new();
     }
 }

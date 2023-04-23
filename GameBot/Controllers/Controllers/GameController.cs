@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Controllers.Controllers
 {
-    internal class GameController
+    public class GameController
     {
+        public GameController() { }
+        public GameController(DBController dB) 
+        {
+
+        }
     }
 }
