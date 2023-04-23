@@ -19,6 +19,11 @@ namespace DBServises.Servises
 {
     public class ApplicationContext : DbContext
     {
+        public ApplicationContext()
+        {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
         public DbSet<User> Users { get; set; }  
         public DbSet<Role> Roles { get; set; } 
         public DbSet<Statistic> Statistics { get; set; }
@@ -50,14 +55,9 @@ namespace DBServises.Servises
         public DbSet<WorkContext> WorkContexts { get; set; }
         public DbSet<UserEvent> UserEvents { get; set; }   
         public DbSet<BaseScenario> Scenarios { get; set; }  
-        public ApplicationContext()
-        {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
-        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=31428");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=1463638");
         }
     }
 }

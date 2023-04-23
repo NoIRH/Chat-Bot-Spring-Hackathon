@@ -10,7 +10,9 @@ namespace GameEngine.GameModels
     public class BaseCharacter
     {
         public int Id { get; set; }
+
         public string Name { get; set; }
+
         public CharacterSpecialization Specialization { get; set; }
     }
 }

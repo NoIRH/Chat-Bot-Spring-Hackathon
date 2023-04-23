@@ -11,14 +11,11 @@
             "id": "0785ae91d61a2a71",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Documentation/Struct app.canvas",
-                "viewState": {
-                  "x": 1306.0180491350138,
-                  "y": 1837.239581261787,
-                  "zoom": -3.3660819156730457
-                }
+                "file": "Documentation/Выжимка с Q&A Cloud.com.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Documentation/Struct app.canvas",
+                "file": "Documentation/Выжимка с Q&A Cloud.com.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Documentation/Struct app.canvas",
+                "file": "Documentation/Выжимка с Q&A Cloud.com.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Documentation/Struct app.canvas"
+                "file": "Documentation/Выжимка с Q&A Cloud.com.md"
               }
             }
           }
@@ -149,11 +146,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "49792ae403692667",
+  "active": "0785ae91d61a2a71",
   "lastOpenFiles": [
-    "Documentation/DB.md",
     "Documentation/Struct app.canvas",
     "Documentation/Functions TeleBot API.canvas",
+    "Documentation/DB.md",
     "Documentation/Выжимка с Q&A Cloud.com.md",
     "README.md",
     "2023-04-15.md",
