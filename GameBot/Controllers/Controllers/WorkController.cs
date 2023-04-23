@@ -8,5 +8,7 @@ namespace Controllers.Controllers
 {
     public class WorkController
     {
+        public WorkController() { }
+        //public WorkController() { }
     }
 }

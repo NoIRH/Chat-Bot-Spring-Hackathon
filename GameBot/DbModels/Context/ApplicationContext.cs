@@ -23,7 +23,6 @@ namespace DBServises.Servises
         public DbSet<Role> Roles { get; set; } 
         public DbSet<Statistic> Statistics { get; set; }
         public DbSet<Achievement> Achievements { get; set; }   
-       // public DbSet<UserAchievement> UserAchievements { get; set; }
         public DbSet<Rate> Rate { get; set; }
         public DbSet<Clan> Clans { get; set; }  
         public DbSet<BaseCharacter> Characters { get; set; }
