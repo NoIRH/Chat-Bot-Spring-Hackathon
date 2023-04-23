@@ -1,6 +1,7 @@
 ﻿using BotClient.Scenarios;
 using Controllers.Contexts;
 using Controllers.DbView;
+using Controllers.EventSystem;
 using GameEngine;
 using GameEngine.Dungeons;
 using GameEngine.GameModels;
@@ -28,7 +29,6 @@ namespace DBServises.Servises
         public DbSet<Role> Roles { get; set; } 
         public DbSet<Statistic> Statistics { get; set; }
         public DbSet<Achievement> Achievements { get; set; }   
-       // public DbSet<UserAchievement> UserAchievements { get; set; }
         public DbSet<Rate> Rate { get; set; }
         public DbSet<Clan> Clans { get; set; }  
         public DbSet<BaseCharacter> Characters { get; set; }
@@ -55,6 +55,17 @@ namespace DBServises.Servises
         public DbSet<WorkContext> WorkContexts { get; set; }
         public DbSet<UserEvent> UserEvents { get; set; }   
         public DbSet<BaseScenario> Scenarios { get; set; }  
+<<<<<<< HEAD
+=======
+        public DbSet<BaseEvent> BaseEvents { get; set; }
+        public DbSet<GameEvent> GameEvents { get; set; }
+        public DbSet<WorkEvent> WorkEvents { get; set; }
+        public ApplicationContext()
+        {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
+>>>>>>> 2d83a9dea8c3271799ce90f79ee4bfbdfd8b8ee4
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=1463638");
