@@ -1,9 +1,13 @@
-﻿using Controllers.Contexts;
+﻿using BotClient.Scenarios;
+using Controllers.Contexts;
 using Controllers.DbView;
+using GameEngine;
+using GameEngine.Dungeons;
 using GameEngine.GameModels;
 using GameEngine.GameModels.CharDescription;
 using GameEngine.GameModels.DbView;
 using GameEngine.GameModels.Items;
+using GameEngine.GameModels.Skills;
 using GeneralLibrary.BaseModels;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -36,10 +40,18 @@ namespace DBServises.Servises
         public DbSet<Potion> Potions { get; set; }  
         public DbSet<InventoryItems> InventoryItems { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<Fight> Fights { get; set; }    
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<AttackSkill> Attacks { get; set; } 
+        public DbSet<BuffSkill> Buffs { get; set; }
+        public DbSet<DebuffSkill> Debuffs { get; set; }
+        public DbSet<HealSkill> Heals { get; set; } 
+        public DbSet<Dungeon> Dungeons { get; set; }    
         public DbSet<BaseContext> BaseContexts { get; set; }
         public DbSet<GameContext> GameContexts { get; set; }  
         public DbSet<WorkContext> WorkContexts { get; set; }
-        public DbSet<UserEvent> UserEvents { get; set; }    
+        public DbSet<UserEvent> UserEvents { get; set; }   
+        public DbSet<BaseScenario> Scenarios { get; set; }  
         public ApplicationContext()
         {
             Database.EnsureDeleted();

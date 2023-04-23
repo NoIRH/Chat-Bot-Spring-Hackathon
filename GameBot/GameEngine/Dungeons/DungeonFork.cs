@@ -8,6 +8,7 @@ namespace GameEngine.Dungeons
 {
     public class DungeonFork
     {
+        public int Id { get; set; }
         private List<DangeonVariantStep> _variants;
         public List<DangeonVariantStep> GetVariants()
         {

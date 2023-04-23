@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Controllers\Controllers.csproj" />
+    <ProjectReference Include="..\DbModels\DbModels.csproj" />
     <ProjectReference Include="..\GameEngine\GameEngine.csproj" />
     <ProjectReference Include="..\GeneralLibrary\GeneralLibrary.csproj" />
   </ItemGroup>

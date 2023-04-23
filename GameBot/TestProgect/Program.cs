@@ -1,7 +1,12 @@
 ﻿
+using DBServises.Servises;
 using GameEngine.GameModels;
 using GameEngine.GameModels.CharDescription;
 
+using(ApplicationContext db = new ApplicationContext())
+{
+
+}
 /*
 using (ApplicationContext db = new ApplicationContext())
 {
