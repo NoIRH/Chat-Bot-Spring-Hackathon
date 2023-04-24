@@ -39,12 +39,12 @@ public class UpdateHandler : IUpdateHandler
             // UpdateType.ShippingQuery:
             // UpdateType.PreCheckoutQuery:
             // UpdateType.Poll:
-            { Message: { } message }                       => BotOnMessageReceived(message, cancellationToken),
-            { EditedMessage: { } message }                 => BotOnMessageReceived(message, cancellationToken),
-            { CallbackQuery: { } callbackQuery }           => BotOnCallbackQueryReceived(callbackQuery, cancellationToken),
-            { InlineQuery: { } inlineQuery }               => BotOnInlineQueryReceived(inlineQuery, cancellationToken),
+            { Message: { } message } => BotOnMessageReceived(message, cancellationToken),
+            { EditedMessage: { } message } => BotOnMessageReceived(message, cancellationToken),
+            { CallbackQuery: { } callbackQuery } => BotOnCallbackQueryReceived(callbackQuery, cancellationToken),
+            { InlineQuery: { } inlineQuery } => BotOnInlineQueryReceived(inlineQuery, cancellationToken),
             { ChosenInlineResult: { } chosenInlineResult } => BotOnChosenInlineResultReceived(chosenInlineResult, cancellationToken),
-            _                                              => UnknownUpdateHandlerAsync(update, cancellationToken)
+            _ => UnknownUpdateHandlerAsync(update, cancellationToken)
         };
 
         await handler;
@@ -58,7 +58,7 @@ public class UpdateHandler : IUpdateHandler
 
         var action = messageText.Split(' ')[0] switch
         {
-            "/start" => StartScenario.Start(_botClient, message, cancellationToken),
+            "/start" => new StartScenario() { Controller = _gameController }.Start(_botClient, message, cancellationToken),
             "/inline_keyboard" => SendInlineKeyboard(_botClient, message, cancellationToken),
             "/keyboard" => SendReplyKeyboard(_botClient, message, cancellationToken),
             "/remove" => RemoveKeyboard(_botClient, message, cancellationToken),
@@ -67,11 +67,11 @@ public class UpdateHandler : IUpdateHandler
             "/inline_mode" => StartInlineQuery(_botClient, message, cancellationToken),
             "/throw" => FailingHandler(_botClient, message, cancellationToken),
             _ => GetHelp(_botClient, message, cancellationToken)
-        } ;
+        };
         Message sentMessage = await action;
         _logger.LogInformation("The message was sent with id: {SentMessageId}", sentMessage.MessageId);
 
-        
+
         static async Task<Message> SendInlineKeyboard(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
         {
             await botClient.SendChatActionAsync(
@@ -79,7 +79,7 @@ public class UpdateHandler : IUpdateHandler
                 chatAction: ChatAction.Typing,
                 cancellationToken: cancellationToken);
 
-           
+
             await Task.Delay(500, cancellationToken);
 
             InlineKeyboardMarkup inlineKeyboard = new(
@@ -137,10 +137,10 @@ public class UpdateHandler : IUpdateHandler
                 message.Chat.Id,
                 ChatAction.UploadPhoto,
                 cancellationToken: cancellationToken);
-            
+
             const string filePath = "Files/tux.png";
-           // await using FileStream fileStream = new(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-           // var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
+            // await using FileStream fileStream = new(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            // var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
 
             return await botClient.SendPhotoAsync(
                 chatId: message.Chat.Id,

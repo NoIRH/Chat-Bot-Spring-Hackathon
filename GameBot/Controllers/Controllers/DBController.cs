@@ -69,5 +69,10 @@ namespace Controllers.Controllers
             ToList();
         public List<CharacterSpecialization> GetCharacterSpecializations() => _dbContext.Specializations.ToList();
         public List<Dungeon> GetDungeons() => _dbContext.Dungeons.Include(d => d.Fork).ToList();
+        public void AddUser(User user)
+        {
+            _dbContext.Users.Add(user);
+            _dbContext.SaveChanges();
+        }
     }
 }
