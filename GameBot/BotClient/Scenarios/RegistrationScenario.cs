@@ -1,16 +1,11 @@
 ﻿using BotClient.Scenarios;
 using Controllers.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Telegram.Bot.Types;
 using Telegram.Bot;
 
 namespace Controllers.Scenarios
 {
-    internal class RegistrationScenario: BaseScenario
+    internal class RegistrationScenario : BaseScenario
     {
         private GameController _gameController;
 
@@ -21,7 +16,10 @@ namespace Controllers.Scenarios
 
         public async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
         {
+            var user = new GeneralLibrary.BaseModels.User() { Id = (int)message.From.Id, ChatId = (int)message.Chat.Id };
 
+            
+            return null;
         }
     }
 }

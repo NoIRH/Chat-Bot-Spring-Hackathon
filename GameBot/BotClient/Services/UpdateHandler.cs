@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Controllers.Scenarios;
 using Telegram.Bot;
 using Telegram.Bot.Exceptions;
@@ -9,6 +9,7 @@ using Telegram.Bot.Types.InlineQueryResults;
 using Telegram.Bot.Types.ReplyMarkups;
 using Controllers.Controllers;
 using DBServises.Servises;
+using BotClient.Scenarios;
 
 namespace BotClient.Services;
 
@@ -23,7 +24,7 @@ public class UpdateHandler : IUpdateHandler
     {
         _botClient = botClient;
         _logger = logger;
-        // ����������� ��
+        // ïîäêëþ÷åíèå áä
         _dBController = new DBController(new ApplicationContext(BotManager.Connection));
         _gameController = new GameController(_dBController);
 
@@ -66,7 +67,7 @@ public class UpdateHandler : IUpdateHandler
             "/request" => RequestContactAndLocation(_botClient, message, cancellationToken),
             "/inline_mode" => StartInlineQuery(_botClient, message, cancellationToken),
             "/throw" => FailingHandler(_botClient, message, cancellationToken),
-            _ => GetHelp(_botClient, message, cancellationToken)
+            _ => null
         };
         Message sentMessage = await action;
         _logger.LogInformation("The message was sent with id: {SentMessageId}", sentMessage.MessageId);
@@ -165,22 +166,22 @@ public class UpdateHandler : IUpdateHandler
                 cancellationToken: cancellationToken);
         }
 
-        static async Task<Message> GetHelp(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
-        {
-            const string usage = "Usage:\n" +
-                                 "/inline_keyboard - send inline keyboard\n" +
-                                 "/keyboard    - send custom keyboard\n" +
-                                 "/remove      - remove custom keyboard\n" +
-                                 "/photo       - send a photo\n" +
-                                 "/request     - request location or contact\n" +
-                                 "/inline_mode - send keyboard with Inline Query";
+        //static async Task<Message> GetHelp(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
+        //{
+        //    const string usage = "Usage:\n" +
+        //                         "/inline_keyboard - send inline keyboard\n" +
+        //                         "/keyboard    - send custom keyboard\n" +
+        //                         "/remove      - remove custom keyboard\n" +
+        //                         "/photo       - send a photo\n" +
+        //                         "/request     - request location or contact\n" +
+        //                         "/inline_mode - send keyboard with Inline Query";
 
-            return await botClient.SendTextMessageAsync(
-                chatId: message.Chat.Id,
-                text: usage,
-                replyMarkup: new ReplyKeyboardRemove(),
-                cancellationToken: cancellationToken);
-        }
+        //    return await botClient.SendTextMessageAsync(
+        //        chatId: message.Chat.Id,
+        //        text: usage,
+        //        replyMarkup: new ReplyKeyboardRemove(),
+        //        cancellationToken: cancellationToken);
+        //}
 
         static async Task<Message> StartInlineQuery(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
         {
@@ -207,12 +208,12 @@ public class UpdateHandler : IUpdateHandler
 
         await _botClient.AnswerCallbackQueryAsync(
             callbackQueryId: callbackQuery.Id,
-            text: $"Received {callbackQuery.Data} jkkjbbbk",
+            text: $"Received {callbackQuery.Data}",
             cancellationToken: cancellationToken);
 
         await _botClient.SendTextMessageAsync(
             chatId: callbackQuery.Message!.Chat.Id,
-            text: $"ok",
+            text: $"На данный момент сценарий в процессе написания!",
             cancellationToken: cancellationToken);
     }
 

@@ -8,44 +8,37 @@ namespace Controllers.Scenarios
 {
     public class StartScenario : BaseScenario
     {
-        private GameController _gameController;
-
-        public GameController Controller 
-        { 
-            set => _gameController = value;
-        }
+        public GameController Controller { private get; set; }
 
         public async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
         {
-            Task<Message> answer = null;
-            var currentUser = _gameController.GetUser((int)message.From.Id);
-            if (currentUser == null)
-            {
-                var textOfGreeting = "Добро пожаловать!\nПерейдём к регистрации?";
-                answer = SendMessage(botClient, message, cancellationToken, textOfGreeting);
-                 //new RegistrationScenario { Controller = _gameController }.Start(botClient, message, cancellationToken);
-            }
-            else
-            {
-                answer =  SendMessage(botClient, message, cancellationToken, "Добро Пожаловать!");
-            }
+            Task<Message> answer;
+            StartTyping(botClient, message, cancellationToken);
+            var currentUser = Controller.GetUser((int)message.From.Id);
             InlineKeyboardMarkup inlineKeyboard = new(
                 new[]
                 {
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData("Да", "AWD"),
+                        InlineKeyboardButton.WithCallbackData("Да", "1"),
+                    },
+                    new []
+                    {
+                        InlineKeyboardButton.WithCallbackData("Нет", "0"),
                     }
                 });
-
+            if (currentUser == null)
+            {
+                var textOfGreeting = "Добро пожаловать!\nПерейдём к регистрации?";
+                answer = SendMessage(botClient, message, cancellationToken, textOfGreeting, inlineKeyboard);
+                new RegistrationScenario { Controller = Controller }.Start(botClient, message, cancellationToken);
+            }
+            else
+            {
+                answer = SendMessage(botClient, message, cancellationToken, "Добро Пожаловать!");
+                GetHelp(botClient, message, cancellationToken);
+            }
             return await answer;
         }
-
-        private static async Task<Message> SendMessage(ITelegramBotClient botClient, Message message, 
-            CancellationToken cancellationToken, string text)=> await botClient.SendTextMessageAsync(
-                chatId: message.Chat.Id,
-                text: "Добро пожаловать!\n" +
-                    "Перейдём к регистрации?",
-                cancellationToken: cancellationToken);
     }
 }
