@@ -9,6 +9,7 @@ using GameEngine.GameModels.Items;
 using GameEngine.GameModels.Skills;
 using GeneralLibrary.BaseModels;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DBServises.Servises
 {
@@ -77,14 +78,21 @@ namespace DBServises.Servises
         public DbSet<GameEvent> GameEvents { get; set; }
 
         public DbSet<WorkEvent> WorkEvents { get; set; }
+        public string Connection = "Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=1463638";
         public ApplicationContext()
         {
             Database.EnsureDeleted();
             Database.EnsureCreated();
         }
+        public ApplicationContext(string coonection)
+        {
+            Connection = coonection;
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=1463638");
+            optionsBuilder.UseNpgsql(Connection);
         }
     }
 }

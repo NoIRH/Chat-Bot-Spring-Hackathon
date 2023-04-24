@@ -24,7 +24,7 @@ public class UpdateHandler : IUpdateHandler
         _botClient = botClient;
         _logger = logger;
         // подключение бд
-        _dBController = new DBController(new ApplicationContext());
+        _dBController = new DBController(new ApplicationContext(BotManager.Connection));
         _gameController = new GameController(_dBController);
 
     }
