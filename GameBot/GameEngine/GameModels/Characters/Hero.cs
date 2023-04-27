@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameEngine.GameModels.CharDescription;
 
-namespace GameEngine.GameModels
+namespace GameEngine.GameModels.Characters
 {
     public class Hero : BaseCharacter
     {
@@ -17,7 +17,7 @@ namespace GameEngine.GameModels
 
         public string ImageSource { get; set; }
 
-        public Inventory Inventory { get; set; }    
+        public Inventory Inventory { get; set; }
 
         public void UpdateStatus() { }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameEngine.GameModels;
+using GameEngine.GameModels.Characters;
 
 namespace GeneralLibrary.BaseModels
 {

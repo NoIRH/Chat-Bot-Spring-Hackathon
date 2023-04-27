@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralLibrary", "GeneralLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProgect", "TestProgect\TestProgect.csproj", "{B2055084-8D8A-431E-8712-EB030C464363}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controllers", "Controllers\Controllers.csproj", "{CFF3E2AA-8944-464F-921E-063CFAC19059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManageLibrary", "Controllers\ManageLibrary.csproj", "{CFF3E2AA-8944-464F-921E-063CFAC19059}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BotClient", "BotClient\BotClient.csproj", "{CA5DD0B3-3268-4E10-AC5A-53F6D0E16A51}"
 EndProject
