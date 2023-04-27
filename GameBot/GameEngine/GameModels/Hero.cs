@@ -17,6 +17,8 @@ namespace GameEngine.GameModels
 
         public string ImageSource { get; set; }
 
+        public Inventory Inventory { get; set; }    
+
         public void UpdateStatus() { }
 
         public void GetStatistics() { }

@@ -5,7 +5,7 @@ namespace ConfigurationForm
     public partial class ConfigurationForm : Form
     {
         private BotManager _teleBot;
-        public static string StringConnection { get; set; } = "Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=1463638";
+        public static string StringConnection { get; set; } = "Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=31428";
         public ConfigurationForm()
         {
             InitializeComponent();
