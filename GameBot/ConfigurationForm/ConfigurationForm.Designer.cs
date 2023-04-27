@@ -42,7 +42,11 @@
             label1 = new Label();
             button1 = new Button();
             buttonBotStart = new Button();
+            groupBox2 = new GroupBox();
+            changeToken = new Button();
+            botTokenField = new TextBox();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -61,18 +65,18 @@
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.Location = new Point(14, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(455, 312);
+            groupBox1.Size = new Size(455, 295);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Строка подключения  бд";
             // 
             // buttonChangeStringConnection
             // 
-            buttonChangeStringConnection.Location = new Point(13, 243);
+            buttonChangeStringConnection.Location = new Point(13, 233);
             buttonChangeStringConnection.Name = "buttonChangeStringConnection";
-            buttonChangeStringConnection.Size = new Size(136, 43);
+            buttonChangeStringConnection.Size = new Size(350, 43);
             buttonChangeStringConnection.TabIndex = 10;
-            buttonChangeStringConnection.Text = "Задать";
+            buttonChangeStringConnection.Text = "Задать  строку подключения бд";
             buttonChangeStringConnection.UseVisualStyleBackColor = true;
             buttonChangeStringConnection.Click += buttonChangeStringConnection_Click;
             // 
@@ -158,7 +162,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(464, 329);
+            button1.Location = new Point(342, 329);
             button1.Name = "button1";
             button1.Size = new Size(322, 89);
             button1.TabIndex = 4;
@@ -176,11 +180,41 @@
             buttonBotStart.UseVisualStyleBackColor = true;
             buttonBotStart.Click += buttonBotStart_Click;
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(changeToken);
+            groupBox2.Controls.Add(botTokenField);
+            groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox2.Location = new Point(475, 12);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(455, 124);
+            groupBox2.TabIndex = 11;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Токен бота";
+            // 
+            // changeToken
+            // 
+            changeToken.Location = new Point(6, 75);
+            changeToken.Name = "changeToken";
+            changeToken.Size = new Size(183, 43);
+            changeToken.TabIndex = 11;
+            changeToken.Text = "Задать токен";
+            changeToken.UseVisualStyleBackColor = true;
+            changeToken.Click += changeToken_Click;
+            // 
+            // botTokenField
+            // 
+            botTokenField.Location = new Point(6, 33);
+            botTokenField.Name = "botTokenField";
+            botTokenField.Size = new Size(431, 34);
+            botTokenField.TabIndex = 1;
+            // 
             // ConfigurationForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 451);
+            ClientSize = new Size(943, 431);
+            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(button1);
             Controls.Add(buttonBotStart);
@@ -189,6 +223,8 @@
             Load += ConfigurationForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -208,5 +244,8 @@
         private Label label1;
         private Button button1;
         private Button buttonBotStart;
+        private GroupBox groupBox2;
+        private TextBox botTokenField;
+        private Button changeToken;
     }
 }
