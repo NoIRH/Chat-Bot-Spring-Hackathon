@@ -11,7 +11,7 @@ namespace BotClient.Scenarios
         {
             Task<Message> scenario;
 
-            if (user.ScenarioId == (int)TypeScenario.Start)
+            if (user == null || user.ScenarioId == (int)TypeScenario.Start)
             {
                 scenario = new StartScenario { Controller = Controller}.Start(botClient, message, cancellationToken, user);
             }

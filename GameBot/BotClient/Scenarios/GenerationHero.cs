@@ -10,8 +10,9 @@ namespace BotClient.Scenarios
     {
         public override async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user)
         {
+            Task<Message> action = null;
 
-            return await base.Start(botClient, message, cancellationToken, user);
+            return await action;
         }
     }
 }

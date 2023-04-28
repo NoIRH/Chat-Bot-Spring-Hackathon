@@ -5,6 +5,7 @@ using DBServises.Servises;
 using GameEngine;
 using GameEngine.Dungeons;
 using GameEngine.GameModels;
+using GameEngine.GameModels.Characters;
 using GameEngine.GameModels.CharDescription;
 using GameEngine.GameModels.Items;
 using GameEngine.GameModels.Skills;

@@ -15,7 +15,7 @@ namespace BotClient.Scenarios
 
         public string Description { get; set; }
 
-        public GameController Controller { get;  set; }
+        public BaseController Controller { get;  set; }
 
         public virtual async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user) => null;
 

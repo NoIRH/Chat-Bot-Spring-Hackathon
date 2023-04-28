@@ -59,7 +59,7 @@ public class UpdateHandler : IUpdateHandler
         var user = _gameController.GetUser((int)message.From.Id);
         var action = messageText.Split(' ')[0] switch
         {
-            "/start" => new StartScenario() { Controller = _gameController }.Start(_botClient, message, cancellationToken, user),
+            "/start" => new GeneralScenario() { Controller = _gameController }.Start(_botClient, message, cancellationToken, user),
             "/inline_keyboard" => SendInlineKeyboard(_botClient, message, cancellationToken),
             "/keyboard" => SendReplyKeyboard(_botClient, message, cancellationToken),
             "/remove" => RemoveKeyboard(_botClient, message, cancellationToken),

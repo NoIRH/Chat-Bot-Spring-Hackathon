@@ -2,11 +2,18 @@
 using DBServises.Servises;
 using GameEngine.GameModels;
 using GameEngine.GameModels.CharDescription;
+using Microsoft.EntityFrameworkCore;
+using Telegram.Bot.Types;
 
-//using (ApplicationContext db = new ApplicationContext())
-//{
-    
-//}
+using (ApplicationContext db = new ApplicationContext())
+{
+    db.Users.Add(new GeneralLibrary.BaseModels.User() { 
+        Id = 0, ChatId = 1, Name = $"User#{12}", ScenarioId = 1, Department = "2", ClanId = 2,
+        Clan = new GeneralLibrary.BaseModels.Clan() { Id = 0, Name = "" },
+        Role = new GeneralLibrary.BaseModels.Role() { Id = 0, Name = "", Type = GeneralLibrary.BaseModels.TypeRole.User}
+    });
+    db.SaveChanges();
+}
 /*
 using (ApplicationContext db = new ApplicationContext())
 {
