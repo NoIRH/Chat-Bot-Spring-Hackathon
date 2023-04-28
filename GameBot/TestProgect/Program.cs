@@ -1,4 +1,5 @@
 ﻿
+using Controllers.Controllers;
 using DBServises.Servises;
 using GameEngine.GameModels;
 using GameEngine.GameModels.CharDescription;
@@ -8,12 +9,15 @@ using Telegram.Bot.Types;
 using (ApplicationContext db = new ApplicationContext())
 {
     db.Users.Add(new GeneralLibrary.BaseModels.User() { 
-        Id = 0, ChatId = 1, Name = $"User#{12}", ScenarioId = 1, Department = "2", ClanId = 2,
+        ChatId = 1, Name = $"User#{12}", ScenarioId = 1, Department = "2", ClanId = 2,
         Clan = new GeneralLibrary.BaseModels.Clan() { Id = 0, Name = "" },
         Role = new GeneralLibrary.BaseModels.Role() { Id = 0, Name = "", Type = GeneralLibrary.BaseModels.TypeRole.User}
     });
     db.SaveChanges();
 }
+DBController dB = new DBController(new ApplicationContext());
+GameController game = new GameController(dB);
+Console.WriteLine(game.GetUser(1));
 /*
 using (ApplicationContext db = new ApplicationContext())
 {
