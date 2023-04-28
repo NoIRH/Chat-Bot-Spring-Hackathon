@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameEngine.GameModels.Characters;
 using GameEngine.GameModels.Items;
 
 namespace GameEngine.GameModels.CharDescription

@@ -15,6 +15,14 @@ namespace BotClient.Services
         public static string Connection;
         public BotManager()
         {
+            Initialization("", true);
+        }
+        public BotManager(string token)
+        {
+            Initialization(token, false);
+        }
+        private void Initialization(string token, bool isdefault)
+        {
             host = Host.CreateDefaultBuilder()
                .ConfigureServices((context, services) =>
                {
@@ -28,6 +36,7 @@ namespace BotClient.Services
                            .AddTypedClient<ITelegramBotClient>((httpClient, sp) =>
                            {
                                BotConfiguration? botConfig = sp.GetConfiguration<BotConfiguration>();
+                               if (!isdefault) botConfig.BotToken = token;
                                TelegramBotClientOptions options = new(botConfig.BotToken);
                                return new TelegramBotClient(options, httpClient);
                            });

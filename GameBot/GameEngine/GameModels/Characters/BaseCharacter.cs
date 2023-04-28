@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine.GameModels
+namespace GameEngine.GameModels.Characters
 {
     public class BaseCharacter
     {

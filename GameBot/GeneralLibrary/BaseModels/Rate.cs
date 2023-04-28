@@ -9,7 +9,7 @@ namespace GeneralLibrary.BaseModels
     public class Rate
     {
         public int Id { get; set; } 
-        public string UserName { get; set; }
+        public  User User { get; set; }
         public double Mark { get; set; }
     }
 }
