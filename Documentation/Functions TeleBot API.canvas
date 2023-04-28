@@ -12,11 +12,11 @@
 		{"type":"text","text":"Dangeon","id":"003a2b427399f1fa","x":730,"y":760,"width":250,"height":60},
 		{"type":"text","text":"Button  \"Help\"","id":"28cbf2f2dc0519b9","x":80,"y":760,"width":250,"height":60},
 		{"type":"text","text":"Creat events\n- Target\n- Count ball\n- Type\n- Name","id":"30b2b00c9cb62796","x":1020,"y":120,"width":250,"height":180},
-		{"id":"caa0c11ad32c8b28","x":1540,"y":120,"width":250,"height":180,"type":"text","text":"End event\n- С победителем\n- Без победителя"},
+		{"type":"text","text":"End event\n- С победителем\n- Без победителя","id":"caa0c11ad32c8b28","x":1540,"y":120,"width":250,"height":180},
 		{"type":"text","text":"Announcement events\n- Only Admin","id":"e17c98e44f8b1136","x":-800,"y":380,"width":250,"height":120},
-		{"id":"c49d164c5051fc55","x":-340,"y":380,"width":250,"height":60,"type":"text","text":"Сообщение о выполнении"},
 		{"type":"text","text":"Button \"Registration\"","id":"37ec00d146ccb710","x":1020,"y":380,"width":250,"height":60},
-		{"type":"text","text":"Call for a fight (list)","id":"cefa70d9b86fa52f","x":1020,"y":610,"width":250,"height":60}
+		{"type":"text","text":"Call for a fight (list)","id":"cefa70d9b86fa52f","x":1020,"y":610,"width":250,"height":60},
+		{"type":"text","text":"Сообщение о выполнении","id":"c49d164c5051fc55","x":-340,"y":440,"width":250,"height":60}
 	],
 	"edges":[
 		{"id":"8daf27877883a0f2","fromNode":"7ae495a2713c3f97","fromSide":"bottom","toNode":"e3c354cbf70d38b7","toSide":"top"},

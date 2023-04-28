@@ -56,10 +56,10 @@ public class UpdateHandler : IUpdateHandler
         _logger.LogInformation("Receive message type: {MessageType}", message.Type);
         if (message.Text is not { } messageText)
             return;
-
+        var user = _gameController.GetUser((int)message.From.Id);
         var action = messageText.Split(' ')[0] switch
         {
-            "/start" => new StartScenario() { Controller = _gameController }.Start(_botClient, message, cancellationToken),
+            "/start" => new StartScenario() { Controller = _gameController }.Start(_botClient, message, cancellationToken, user),
             "/inline_keyboard" => SendInlineKeyboard(_botClient, message, cancellationToken),
             "/keyboard" => SendReplyKeyboard(_botClient, message, cancellationToken),
             "/remove" => RemoveKeyboard(_botClient, message, cancellationToken),
@@ -67,7 +67,7 @@ public class UpdateHandler : IUpdateHandler
             "/request" => RequestContactAndLocation(_botClient, message, cancellationToken),
             "/inline_mode" => StartInlineQuery(_botClient, message, cancellationToken),
             "/throw" => FailingHandler(_botClient, message, cancellationToken),
-            _ => null
+            _ => new GeneralScenario() { Controller = _gameController }.Start(_botClient, message, cancellationToken, user)
         };
         Message sentMessage = await action;
         _logger.LogInformation("The message was sent with id: {SentMessageId}", sentMessage.MessageId);
@@ -205,16 +205,18 @@ public class UpdateHandler : IUpdateHandler
     private async Task BotOnCallbackQueryReceived(CallbackQuery callbackQuery, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Received inline keyboard callback from: {CallbackQueryId}", callbackQuery.Id);
+        
+        //await _botClient.AnswerCallbackQueryAsync(
+        //    callbackQueryId: callbackQuery.Id,
+        //    text: $"Received",
+        //    cancellationToken: cancellationToken);
 
-        await _botClient.AnswerCallbackQueryAsync(
-            callbackQueryId: callbackQuery.Id,
-            text: $"Received {callbackQuery.Data}",
-            cancellationToken: cancellationToken);
+        //await _botClient.SendTextMessageAsync(
+        //    chatId: callbackQuery.Message!.Chat.Id,
+        //    text: $"На данный момент сценарий в процессе написания !",
+        //    cancellationToken: cancellationToken);
 
-        await _botClient.SendTextMessageAsync(
-            chatId: callbackQuery.Message!.Chat.Id,
-            text: $"На данный момент сценарий в процессе написания!",
-            cancellationToken: cancellationToken);
+        await BotOnMessageReceived(callbackQuery.Message, cancellationToken);
     }
 
     #region Inline Mode

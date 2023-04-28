@@ -50,8 +50,6 @@ namespace BotClient.Services
 
     }
     public class BotConfiguration
-#pragma warning restore RCS1110 // Declare type inside namespace.
-#pragma warning restore CA1050 // Declare types in namespaces
     {
         public static readonly string Configuration = "BotConfiguration";
 
