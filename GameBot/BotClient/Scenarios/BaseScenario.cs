@@ -3,6 +3,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot;
 using Telegram.Bot.Types.Enums;
 using User = GeneralLibrary.BaseModels.User;
+using System.Diagnostics.Contracts;
 
 namespace BotClient.Scenarios
 {
@@ -24,12 +25,6 @@ namespace BotClient.Scenarios
         public ScenariosController Controller { get;  set; }
 
         public virtual async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user) => null;
-
-        //public async Task<Message> SendMessage(ITelegramBotClient botClient, Message message,
-        //        CancellationToken cancellationToken, string textMessage) => await botClient.SendTextMessageAsync(
-        //            chatId: message.Chat.Id,
-        //            text: textMessage,
-        //            cancellationToken: cancellationToken);
 
         public async Task<Message> SendMessage(ITelegramBotClient botClient, Message message,
                 CancellationToken cancellationToken, string textMessage, IReplyMarkup replyMarkup = null) => await botClient.SendTextMessageAsync(

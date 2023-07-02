@@ -4,7 +4,7 @@ namespace Controllers.Controllers
 {
     public class BaseController
     {
-        private DBController _db;
+        protected DBController _db;
 
         public List<User> Users { get; set; }
 

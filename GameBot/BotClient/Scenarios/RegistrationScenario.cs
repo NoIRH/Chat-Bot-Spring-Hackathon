@@ -3,19 +3,11 @@ using Telegram.Bot.Types;
 using Telegram.Bot;
 using User = GeneralLibrary.BaseModels.User;
 using Telegram.Bot.Types.ReplyMarkups;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Controllers.Scenarios
 {
     internal class RegistrationScenario : BaseScenario
     {
-        private ScenariosController _controller;
-
-        public ScenariosController Controller
-        {
-            set => _controller = value;
-        }
-
         public override void Solve(User user, CallbackQuery callbackQuery)
         {
             var step = user.CurrentScenarioStep;
@@ -34,8 +26,8 @@ namespace Controllers.Scenarios
                     Name = $"NoName#{message.From.Id}",
                     ScenarioId = (int)TypeScenario.Registration,
                 };
-                _controller.AddUser(user);
-                var text = "Добро пожаловать в черепаший бот!";
+                Controller.AddUser(user);
+                var text = "Итак, давайте начнём регистрацию!";
                 await SendMessage(botClient, message, cancellationToken, text);
             }
             // steps of registration scenario.
@@ -58,7 +50,7 @@ namespace Controllers.Scenarios
                     }
                });
                 user.Name = message.Text;
-                _controller.UpdateDataDB();
+                Controller.UpdateDataDB();
                 return await SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
             }
             else if (user.CurrentScenarioStep == 2)
@@ -88,29 +80,15 @@ namespace Controllers.Scenarios
                     }
                });
                 user.Department = message.Text.Split("_")[1];
-                _controller.UpdateDataDB();
-                return await SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
-            }
-            else if (user.CurrentScenarioStep == 4)
-            {
-                var text = "⟱ Готовы создать свою черепашку? ⟱";
-                InlineKeyboardMarkup inlineKeyboard = new(
-               new[]
-               {
-                    new []
-                    {
-                        InlineKeyboardButton.WithCallbackData("Да", "true"),
-                        InlineKeyboardButton.WithCallbackData("Нет", "false")
-                    }
-               });
+                Controller.UpdateDataDB();
                 return await SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
             }
             else
             {
-                user.ScenarioId = (int)TypeScenario.GenerationHero;
-                user.CurrentScenarioStep = 0;
-                _controller.UpdateDataDB();
-                return await new GenerationHero() { Controller = _controller }.Start(botClient, message, cancellationToken, user); // if this throw exception, then everything is ok.
+                user.ScenarioId = (int)TypeScenario.Start;
+                user.CurrentScenarioStep = (int)StartScenario.Options.Greeting;
+                Controller.UpdateDataDB();
+                return await new StartScenario() { Controller = Controller }.Start(botClient, message, cancellationToken, user); // if this throw exception, then everything is ok.
             }
         }
     }

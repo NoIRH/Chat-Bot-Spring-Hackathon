@@ -1,5 +1,6 @@
 ﻿using Controllers.Controllers;
 using Controllers.Scenarios;
+using GeneralLibrary.BaseModels;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using User = GeneralLibrary.BaseModels.User;
@@ -12,34 +13,14 @@ namespace BotClient.Scenarios
 
         public async Task<Message> RedirectToScenario(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user)
         {
-            BaseScenario scenario;
             if (user == null)
             {
-                scenario = new RegistrationScenario { Controller = this };
+                return await new StartScenario { Controller = this }.Start(botClient, message, cancellationToken, user);
             }
             else
             {
-                scenario = GetScenario(user.ScenarioId);
+                return await GetScenario(user.ScenarioId).Start(botClient, message, cancellationToken, user);
             }
-            return await scenario.Start(botClient, message, cancellationToken, user);
-
-            //if (user == null || user.ScenarioId == (int)TypeScenario.Start)
-            //{
-            //    scenario = new StartScenario { Controller = Controller }.Start(botClient, message, cancellationToken, user);
-            //}
-            //else if (user.ScenarioId == (int)TypeScenario.Registration)
-            //{
-            //    scenario = new RegistrationScenario { Controller = Controller }.Start(botClient, message, cancellationToken, user);
-            //}
-            //else if (user.ScenarioId == (int)TypeScenario.GenerationHero)
-            //{
-            //    scenario = new ControllerScenarios { Controller = Controller }.RedirectToScenario(botClient, message, cancellationToken, user);
-            //}
-            //else
-            //{
-            //    scenario = new BaseScenario { Controller = Controller }.PrintHelp(botClient, message, cancellationToken);
-            //}
-            //return await scenario;
         }
 
         public void Manage(User user, CallbackQuery callbackQuery)
@@ -67,5 +48,7 @@ namespace BotClient.Scenarios
                 return new BaseScenario { Controller = this };
             }
         }
+
+        public List<Rate> GetRates() => _db.GetRates();
     }
 }

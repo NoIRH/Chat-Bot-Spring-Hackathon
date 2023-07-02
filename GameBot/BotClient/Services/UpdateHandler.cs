@@ -56,10 +56,10 @@ public class UpdateHandler : IUpdateHandler
         if (message.Text is not { } messageText)
             return;
         var user = _scenarioController.GetUser((int)message.Chat.Id);
-        var action = messageText.Split(' ')[0] switch
+        var action = messageText.Split(' ')[0] switch // rework this panel.
         {
-            "/start" => _scenarioController.RedirectToScenario(_botClient, message, cancellationToken, user),
-            "/inline_keyboard" => SendInlineKeyboard(_botClient, message, cancellationToken),
+            "/start" => new StartScenario { Controller = _scenarioController }.Start(_botClient, message, cancellationToken, user, StartScenario.Options.Greeting),
+            "/menu" => new StartScenario { Controller = _scenarioController }.Start(_botClient, message, cancellationToken, user, StartScenario.Options.Menu),
             "/keyboard" => SendReplyKeyboard(_botClient, message, cancellationToken),
             "/remove" => RemoveKeyboard(_botClient, message, cancellationToken),
             "/photo" => SendFile(_botClient, message, cancellationToken),
