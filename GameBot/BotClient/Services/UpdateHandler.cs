@@ -18,15 +18,14 @@ public class UpdateHandler : IUpdateHandler
     private readonly ITelegramBotClient _botClient;
     private readonly ILogger<UpdateHandler> _logger;
     private readonly DBController _dBController;
-    private readonly GameController _gameController;
+    private readonly ScenariosController _scenarioController;
 
     public UpdateHandler(ITelegramBotClient botClient, ILogger<UpdateHandler> logger)
     {
         _botClient = botClient;
         _logger = logger;
-        // ïîäêëþ÷åíèå áä
         _dBController = new DBController(new ApplicationContext(BotManager.Connection));
-        _gameController = new GameController(_dBController);
+        _scenarioController = new ScenariosController(_dBController);
 
     }
 
@@ -56,10 +55,10 @@ public class UpdateHandler : IUpdateHandler
         _logger.LogInformation("Receive message type: {MessageType}", message.Type);
         if (message.Text is not { } messageText)
             return;
-        var user = _gameController.GetUser((int)message.From.Id);
+        var user = _scenarioController.GetUser((int)message.Chat.Id);
         var action = messageText.Split(' ')[0] switch
         {
-            "/start" => new GeneralScenario() { Controller = _gameController }.Start(_botClient, message, cancellationToken, user),
+            "/start" => _scenarioController.RedirectToScenario(_botClient, message, cancellationToken, user),
             "/inline_keyboard" => SendInlineKeyboard(_botClient, message, cancellationToken),
             "/keyboard" => SendReplyKeyboard(_botClient, message, cancellationToken),
             "/remove" => RemoveKeyboard(_botClient, message, cancellationToken),
@@ -67,7 +66,7 @@ public class UpdateHandler : IUpdateHandler
             "/request" => RequestContactAndLocation(_botClient, message, cancellationToken),
             "/inline_mode" => StartInlineQuery(_botClient, message, cancellationToken),
             "/throw" => FailingHandler(_botClient, message, cancellationToken),
-            _ => new GeneralScenario() { Controller = _gameController }.Start(_botClient, message, cancellationToken, user)
+            _ => _scenarioController.RedirectToScenario(_botClient, message, cancellationToken, user)
         };
         Message sentMessage = await action;
         _logger.LogInformation("The message was sent with id: {SentMessageId}", sentMessage.MessageId);
@@ -205,17 +204,14 @@ public class UpdateHandler : IUpdateHandler
     private async Task BotOnCallbackQueryReceived(CallbackQuery callbackQuery, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Received inline keyboard callback from: {CallbackQueryId}", callbackQuery.Id);
-        
-        //await _botClient.AnswerCallbackQueryAsync(
-        //    callbackQueryId: callbackQuery.Id,
-        //    text: $"Received",
-        //    cancellationToken: cancellationToken);
 
-        //await _botClient.SendTextMessageAsync(
-        //    chatId: callbackQuery.Message!.Chat.Id,
-        //    text: $"На данный момент сценарий в процессе написания !",
-        //    cancellationToken: cancellationToken);
+        var user = _scenarioController.GetUser((int)callbackQuery.Message.Chat.Id);
 
+        if (user != null)
+        {
+            _scenarioController.Manage(user, callbackQuery);
+        }
+        callbackQuery.Message.Text = callbackQuery.Data;
         await BotOnMessageReceived(callbackQuery.Message, cancellationToken);
     }
 

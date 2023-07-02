@@ -6,18 +6,18 @@ using GameEngine.GameModels.CharDescription;
 using Microsoft.EntityFrameworkCore;
 using Telegram.Bot.Types;
 
-using (ApplicationContext db = new ApplicationContext())
-{
-    db.Users.Add(new GeneralLibrary.BaseModels.User() { 
-        ChatId = 1, Name = $"User#{12}", ScenarioId = 1, Department = "2", ClanId = 2,
-        Clan = new GeneralLibrary.BaseModels.Clan() { Id = 0, Name = "" },
-        Role = new GeneralLibrary.BaseModels.Role() { Id = 0, Name = "", Type = GeneralLibrary.BaseModels.TypeRole.User}
-    });
-    db.SaveChanges();
-}
-DBController dB = new DBController(new ApplicationContext());
-GameController game = new GameController(dB);
-Console.WriteLine(game.GetUser(1));
+//using (ApplicationContext db = new ApplicationContext())
+//{
+//    db.Users.Add(new GeneralLibrary.BaseModels.User() { 
+//        ChatId = 1, Name = $"User#{12}", ScenarioId = 1, Department = "2", ClanId = 2,
+//        Clan = new GeneralLibrary.BaseModels.Clan() { Id = 0, Name = "" },
+//        Role = new GeneralLibrary.BaseModels.Role() { Id = 0, Name = "", Type = GeneralLibrary.BaseModels.TypeRole.User}
+//    });
+//    db.SaveChanges();
+//}
+//DBController dB = new DBController(new ApplicationContext());
+//GameController game = new GameController(dB);
+//Console.WriteLine(game.GetUser(1));
 /*
 using (ApplicationContext db = new ApplicationContext())
 {
@@ -40,9 +40,12 @@ using (ApplicationContext db = new ApplicationContext())
     }
 }
 */
-Random r = new Random();
-for (int i = 0; i < 10; i++)
-{
-    if (r.Next(0, 3) == 3) Console.WriteLine("gggg");
-}
-Console.WriteLine("end");
+//Random r = new Random();
+//for (int i = 0; i < 10; i++)
+//{
+//    if (r.Next(0, 3) == 3) Console.WriteLine("gggg");
+//}
+//Console.WriteLine("end");
+
+bool answer = Convert.ToBoolean("true");
+answer = !answer;

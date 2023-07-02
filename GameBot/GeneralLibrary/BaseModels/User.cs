@@ -15,10 +15,10 @@ namespace GeneralLibrary.BaseModels
 
         public string Name { get; set; }
 
-        public Role Role { get; set; }
+        public Role? Role { get; set; }
         //remake this
 
-        public string Department { get; set; }
+        public string? Department { get; set; }
 
         public Hero? Hero { get; set; }
 
@@ -29,7 +29,7 @@ namespace GeneralLibrary.BaseModels
 
         public int CurrentScenarioStep { get; set; }    
 
-        public int ClanId { get; set; }
+        public int? ClanId { get; set; }
 
         public Clan? Clan { get; set; }
         // NEED TO FINISH 

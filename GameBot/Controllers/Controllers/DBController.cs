@@ -4,30 +4,25 @@ using Controllers.EventSystem;
 using DBServises.Servises;
 using GameEngine;
 using GameEngine.Dungeons;
-using GameEngine.GameModels;
 using GameEngine.GameModels.Characters;
 using GameEngine.GameModels.CharDescription;
 using GameEngine.GameModels.Items;
 using GameEngine.GameModels.Skills;
 using GeneralLibrary.BaseModels;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Controllers.Controllers
 {
     public class DBController
     {
         private readonly ApplicationContext _dbContext;
-        public DBController(ApplicationContext context) 
+        public DBController(ApplicationContext context)
         {
             _dbContext = context;
         }
         public List<User> GetUsers() => _dbContext.Users.Include(u => u.Achievements).ToList();
-        public List<Statistic> GetStatistics() => _dbContext.Statistics.ToList(); 
+        public List<Statistic> GetStatistics() => _dbContext.Statistics.ToList();
         public List<Rate> GetRates() => _dbContext.Rate.ToList();
         public List<Clan> GetClans() => _dbContext.Clans.Include(c => c.Users).ToList();
         public List<Achievement> GetAchievements() => _dbContext.Achievements.Include(a => a.Users).ToList();
@@ -62,7 +57,7 @@ namespace Controllers.Controllers
         public List<DebuffSkill> GetDebuffSkills() => _dbContext.Debuffs.ToList();
         public List<HealSkill> GetHealSkills() => _dbContext.Heals.ToList();
         public List<Status> GetStatuses() => _dbContext.Statuses.ToList();
-        public List<Inventory> GetInventories() => _dbContext.Inventories.Include( i => i.Items).ToList();
+        public List<Inventory> GetInventories() => _dbContext.Inventories.Include(i => i.Items).ToList();
         public List<Equipment> GetEquipment() => _dbContext.Equipment.
             Include(e => e.Armors).
             Include(e => e.Weapons).
@@ -73,7 +68,20 @@ namespace Controllers.Controllers
         public void AddUser(User user)
         {
             _dbContext.Users.Add(user);
-            _dbContext.SaveChanges();
+            UpdateData();
+        }
+
+        public void UpdateData()
+        {
+            try
+            {
+                _dbContext.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
     }
 }

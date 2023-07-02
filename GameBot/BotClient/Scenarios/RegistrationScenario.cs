@@ -1,52 +1,50 @@
 ﻿using BotClient.Scenarios;
-using Controllers.Controllers;
 using Telegram.Bot.Types;
 using Telegram.Bot;
 using User = GeneralLibrary.BaseModels.User;
 using Telegram.Bot.Types.ReplyMarkups;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Controllers.Scenarios
 {
     internal class RegistrationScenario : BaseScenario
     {
-        private BaseController _baseController;
+        private ScenariosController _controller;
 
-        public BaseController Controller
+        public ScenariosController Controller
         {
-            set => _baseController = value;
+            set => _controller = value;
+        }
+
+        public override void Solve(User user, CallbackQuery callbackQuery)
+        {
+            var step = user.CurrentScenarioStep;
+            var answer = Convert.ToBoolean(callbackQuery.Data.Split("_")[0]);
+            user.CurrentScenarioStep = answer ? user.CurrentScenarioStep += 1 : user.CurrentScenarioStep -= 1;
         }
 
         public override async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user)
         {
-            Task<Message> action = null;
             if (user == null)
             {
                 user = new User()
                 {
                     Id = (int)message.From.Id,
                     ChatId = (int)message.Chat.Id,
-                    Name = $"User#{message.From.Id}",
+                    Name = $"NoName#{message.From.Id}",
                     ScenarioId = (int)TypeScenario.Registration,
-                    ClanId = -1,
-                    Clan = new GeneralLibrary.BaseModels.Clan() { Id = -1, Name = "" },
-                    Role = new GeneralLibrary.BaseModels.Role()
-                    {
-                        Id = -1,
-                        Name = "",
-                        Type = GeneralLibrary.BaseModels.TypeRole.User
-                    },
-                    Department = ""
                 };
-                _baseController.AddUser(user);
+                _controller.AddUser(user);
+                var text = "Добро пожаловать в черепаший бот!";
+                await SendMessage(botClient, message, cancellationToken, text);
             }
-
+            // steps of registration scenario.
             if (user.CurrentScenarioStep == 0)
             {
                 var text = "⟱ Введите, пожалуйста, имя ⟱";
-                action = SendMessage(botClient, message, cancellationToken, text);
                 user.CurrentScenarioStep += 1;
+                return await SendMessage(botClient, message, cancellationToken, text);
             }
-
             else if (user.CurrentScenarioStep == 1)
             {
                 var text = "⟱ Вы уверены? ⟱";
@@ -55,26 +53,15 @@ namespace Controllers.Scenarios
                {
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData("Да", "1"),
-                        InlineKeyboardButton.WithCallbackData("Нет", "0"),
+                        InlineKeyboardButton.WithCallbackData("Да", "true"),
+                        InlineKeyboardButton.WithCallbackData("Нет", "false")
                     }
                });
-                user.CurrentScenarioStep += 1;
-                action = SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
+                user.Name = message.Text;
+                _controller.UpdateDataDB();
+                return await SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
             }
-
             else if (user.CurrentScenarioStep == 2)
-            {
-                if (true)
-                {
-                    user.CurrentScenarioStep += 1;
-                }
-                else
-                {
-                    user.CurrentScenarioStep = 0;
-                }
-            }
-            else if (user.CurrentScenarioStep == 3)
             {
                 var text = "⟱ Пожалуйста, выбирите отдел ⟱";
                 InlineKeyboardMarkup inlineKeyboard = new(
@@ -82,14 +69,13 @@ namespace Controllers.Scenarios
                {
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData("1", "1"),
-                        InlineKeyboardButton.WithCallbackData("2", "2"),
+                        InlineKeyboardButton.WithCallbackData("1", "true_1"),
+                        InlineKeyboardButton.WithCallbackData("2", "true_2"),
                     }
                });
-                user.CurrentScenarioStep += 1;
-                action = SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
+                return await SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
             }
-            else if (user.CurrentScenarioStep == 4)
+            else if (user.CurrentScenarioStep == 3)
             {
                 var text = "⟱ Вы уверены? ⟱";
                 InlineKeyboardMarkup inlineKeyboard = new(
@@ -97,14 +83,15 @@ namespace Controllers.Scenarios
                {
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData("Да", "1"),
-                        InlineKeyboardButton.WithCallbackData("Нет", "0"),
+                        InlineKeyboardButton.WithCallbackData("Да", "true"),
+                        InlineKeyboardButton.WithCallbackData("Нет", "false")
                     }
                });
-                user.CurrentScenarioStep += 1;
-                action = SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
+                user.Department = message.Text.Split("_")[1];
+                _controller.UpdateDataDB();
+                return await SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
             }
-            else if (user.CurrentScenarioStep == 5)
+            else if (user.CurrentScenarioStep == 4)
             {
                 var text = "⟱ Готовы создать свою черепашку? ⟱";
                 InlineKeyboardMarkup inlineKeyboard = new(
@@ -112,21 +99,19 @@ namespace Controllers.Scenarios
                {
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData("Да", "1"),
-                        InlineKeyboardButton.WithCallbackData("Нет", "0"),
+                        InlineKeyboardButton.WithCallbackData("Да", "true"),
+                        InlineKeyboardButton.WithCallbackData("Нет", "false")
                     }
                });
-                user.CurrentScenarioStep += 1;
-                action = SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
+                return await SendMessage(botClient, message, cancellationToken, text, inlineKeyboard);
             }
-            else if (user.CurrentScenarioStep == 6)
+            else
             {
                 user.ScenarioId = (int)TypeScenario.GenerationHero;
                 user.CurrentScenarioStep = 0;
-                action = new GenerationHero() { Controller = _baseController }.Start(botClient, message, cancellationToken, user);
+                _controller.UpdateDataDB();
+                return await new GenerationHero() { Controller = _controller }.Start(botClient, message, cancellationToken, user); // if this throw exception, then everything is ok.
             }
-
-            return await action;
         }
     }
 }

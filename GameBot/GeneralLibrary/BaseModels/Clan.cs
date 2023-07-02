@@ -11,6 +11,6 @@ namespace GeneralLibrary.BaseModels
         public int Id { get; set; }
         public string Name { get; set; }
         // need to add list users and probably something else
-        public List<User> Users { get; set; } = new();
+        public List<User?>? Users { get; set; } = new();
     }
 }

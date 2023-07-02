@@ -11,7 +11,7 @@ namespace Controllers.Scenarios
         public async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user)
         {
             Task<Message> answer = null;
-            StartTyping(botClient, message, cancellationToken);
+            Print(botClient, message, cancellationToken);
             if (user == null)
             {
                 var textOfGreeting = "Добро пожаловать!\nВам обязательно нужно зарегистрироваться!";

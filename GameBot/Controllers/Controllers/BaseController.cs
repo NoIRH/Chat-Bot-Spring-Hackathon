@@ -21,6 +21,15 @@ namespace Controllers.Controllers
             return Users.FirstOrDefault(u => u.Id == id);
         }
 
-        public void AddUser(User user) => _db.AddUser(user);
+        public void AddUser(User user)
+        {
+            _db.AddUser(user);
+            Users = _db.GetUsers();
+        }
+
+        public void UpdateDataDB()
+        {
+            _db.UpdateData();
+        }
     }
 }
