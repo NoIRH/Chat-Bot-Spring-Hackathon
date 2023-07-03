@@ -25,12 +25,14 @@ namespace Controllers.Scenarios
                 return await new RegistrationScenario { Controller = Controller }.Start(botClient, message, cancellationToken, user);
             }
 
-            //if (user.Hero == null)
-            //{
-            //    var textOfGreeting = "Пришло время создать свою черепашку :)";
-            //    await SendMessage(botClient, message, cancellationToken, textOfGreeting);
-            //    return await new GenerationHero { Controller = Controller }.Start(botClient, message, cancellationToken, user);
-            //}
+            if (user.Hero == null)
+            {
+                var textOfGreeting = "Пришло время создать свою черепашку :)";
+                await SendMessage(botClient, message, cancellationToken, textOfGreeting);
+                user.ScenarioId = (int)TypeScenario.GenerationHero;
+                user.CurrentScenarioStep = 0;
+                return await new GenerationHero { Controller = Controller }.Start(botClient, message, cancellationToken, user);
+            }
 
             if (user.CurrentScenarioStep == 0)
             {
@@ -84,7 +86,7 @@ namespace Controllers.Scenarios
             user.CurrentScenarioStep += 1;
         }
 
-        private void GetStatistics()
+        private void GetRates()
         {
             var rates = Controller.GetRates();
             if (rates == null)

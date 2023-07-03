@@ -63,7 +63,7 @@ namespace Controllers.Controllers
             Include(e => e.Weapons).
             Include(e => e.Jeverlys).
             ToList();
-        public List<CharacterSpecialization> GetCharacterSpecializations() => _dbContext.Specializations.ToList();
+        public List<CharacterClass> GetCharacterSpecializations() => _dbContext.Specializations.ToList();
         public List<Dungeon> GetDungeons() => _dbContext.Dungeons.Include(d => d.Fork).ToList();
         public void AddUser(User user)
         {

@@ -13,11 +13,11 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "Documentation/Functions TeleBot API.canvas",
+                "file": "Documentation/Struct app.canvas",
                 "viewState": {
-                  "x": 495,
-                  "y": 330,
-                  "zoom": -0.8171359428501899
+                  "x": -550.6833677787271,
+                  "y": 1394.9317145836926,
+                  "zoom": -0.6379555883350407
                 }
               }
             }
@@ -67,6 +67,14 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "3d36f5fb8739f36f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -88,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Documentation/Functions TeleBot API.canvas",
+                "file": "Documentation/Struct app.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Documentation/Functions TeleBot API.canvas",
+                "file": "Documentation/Struct app.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Documentation/Functions TeleBot API.canvas"
+                "file": "Documentation/Struct app.canvas"
               }
             }
           }
@@ -151,20 +159,21 @@
   },
   "active": "0785ae91d61a2a71",
   "lastOpenFiles": [
-    "Documentation/Struct app.canvas",
-    "Documentation/DB.md",
-    "Documentation/Выжимка с Q&A Cloud.com.md",
+    "GameBot/ConfigurationForm/obj/Debug/net7.0-windows/ConfigurationForm.csproj.CopyComplete",
+    "GameBot/ConfigurationForm/bin/Debug/net7.0-windows/BotClient.pdb",
+    "GameBot/ConfigurationForm/bin/Debug/net7.0-windows/BotClient.dll",
+    "GameBot/TestProgect/bin/Debug/net7.0/TestProgect.pdb",
+    "GameBot/TestProgect/obj/Debug/net7.0/ref/TestProgect.dll",
+    "GameBot/TestProgect/bin/Debug/net7.0/TestProgect.dll",
+    "GameBot/TestProgect/bin/Debug/net7.0/TestProgect.runtimeconfig.json",
+    "GameBot/TestProgect/obj/Debug/net7.0/TestProgect.genruntimeconfig.cache",
+    "GameBot/TestProgect/bin/Debug/net7.0/TestProgect.deps.json",
+    "GameBot/TestProgect/bin/Debug/net7.0/TestProgect.exe",
+    "GameBot/TestProgect/bin/Debug/net7.0/Microsoft.Extensions.Logging.dll",
     "Documentation/Functions TeleBot API.canvas",
-    "GameBot/ConfigurationForm/obj/Debug/net7.0-windows/ConfigurationForm.csproj.BuildWithSkipAnalyzers",
-    "GameBot/ConfigurationForm/bin/Debug/net7.0-windows/ConfigurationForm.pdb",
-    "GameBot/ConfigurationForm/obj/Debug/net7.0-windows/ref/ConfigurationForm.dll",
-    "GameBot/ConfigurationForm/bin/Debug/net7.0-windows/ConfigurationForm.dll",
-    "GameBot/ConfigurationForm/bin/Debug/net7.0-windows/ConfigurationForm.runtimeconfig.json",
-    "GameBot/ConfigurationForm/obj/Debug/net7.0-windows/ConfigurationForm.genruntimeconfig.cache",
-    "GameBot/ConfigurationForm/bin/Debug/net7.0-windows/ConfigurationForm.deps.json",
-    "GameBot/ConfigurationForm/bin/Debug/net7.0-windows/BotClient.deps.json",
-    "GameBot/ConfigurationForm/bin/Debug/net7.0-windows/BotClient.runtimeconfig.json",
-    "GameBot/ConfigurationForm/bin/Debug/net7.0-windows/BotClient.exe",
+    "Documentation/DB.md",
+    "Documentation/Struct app.canvas",
+    "Documentation/Выжимка с Q&A Cloud.com.md",
     "README.md",
     "2023-04-15.md",
     "Pasted image 20230412232055.png"

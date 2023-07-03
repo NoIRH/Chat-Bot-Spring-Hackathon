@@ -30,7 +30,7 @@ namespace DBServises.Servises
 
         public DbSet<BaseCharacter> Characters { get; set; }
 
-        public DbSet<CharacterSpecialization> Specializations { get; set; } 
+        public DbSet<CharacterClass> Specializations { get; set; } 
 
         public DbSet<Hero> Heroes { get; set; }
 

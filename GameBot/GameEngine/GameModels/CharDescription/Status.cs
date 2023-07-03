@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace GameEngine.GameModels.CharDescription
 {
     public class Status
     {
         public int Id { get; set; }
         public int HitPoints { get; set; }
-        public int Energy { get; set; }
+        public int Energy { get; set; } //Mana
         public int Stamina { get; set; }
         public int AttackMin { get; set; }
         public int AttackMax { get; set; }

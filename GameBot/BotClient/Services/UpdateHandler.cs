@@ -79,23 +79,21 @@ public class UpdateHandler : IUpdateHandler
                 chatAction: ChatAction.Typing,
                 cancellationToken: cancellationToken);
 
-
-            await Task.Delay(500, cancellationToken);
-
             InlineKeyboardMarkup inlineKeyboard = new(
                 new[]
                 {
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData("1.1", "11"),
-                        InlineKeyboardButton.WithCallbackData("1.2", "12"),
+                        InlineKeyboardButton.WithCallbackData("1", "11"),
+                        InlineKeyboardButton.WithCallbackData("2", "12"),
                     },
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData("2.1", "21"),
-                        InlineKeyboardButton.WithCallbackData("2.2", "22"),
+                        InlineKeyboardButton.WithCallbackData("3", "21"),
+                        InlineKeyboardButton.WithCallbackData("4", "22"),
                     },
                 });
+
             return await botClient.SendTextMessageAsync(
                 chatId: message.Chat.Id,
                 text: "Choose",
@@ -114,7 +112,6 @@ public class UpdateHandler : IUpdateHandler
             {
                 ResizeKeyboard = true
             };
-
             return await botClient.SendTextMessageAsync(
                 chatId: message.Chat.Id,
                 text: "Choose",
@@ -165,22 +162,22 @@ public class UpdateHandler : IUpdateHandler
                 cancellationToken: cancellationToken);
         }
 
-        //static async Task<Message> GetHelp(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
-        //{
-        //    const string usage = "Usage:\n" +
-        //                         "/inline_keyboard - send inline keyboard\n" +
-        //                         "/keyboard    - send custom keyboard\n" +
-        //                         "/remove      - remove custom keyboard\n" +
-        //                         "/photo       - send a photo\n" +
-        //                         "/request     - request location or contact\n" +
-        //                         "/inline_mode - send keyboard with Inline Query";
+        static async Task<Message> GetHelp(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
+        {
+            const string usage = "Usage:\n" +
+                                 "/inline_keyboard - send inline keyboard\n" +
+                                 "/keyboard    - send custom keyboard\n" +
+                                 "/remove      - remove custom keyboard\n" +
+                                 "/photo       - send a photo\n" +
+                                 "/request     - request location or contact\n" +
+                                 "/inline_mode - send keyboard with Inline Query";
 
-        //    return await botClient.SendTextMessageAsync(
-        //        chatId: message.Chat.Id,
-        //        text: usage,
-        //        replyMarkup: new ReplyKeyboardRemove(),
-        //        cancellationToken: cancellationToken);
-        //}
+            return await botClient.SendTextMessageAsync(
+                chatId: message.Chat.Id,
+                text: usage,
+                replyMarkup: new ReplyKeyboardRemove(),
+                cancellationToken: cancellationToken);
+        }
 
         static async Task<Message> StartInlineQuery(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
         {
@@ -193,7 +190,6 @@ public class UpdateHandler : IUpdateHandler
                 replyMarkup: inlineKeyboard,
                 cancellationToken: cancellationToken);
         }
-
 
         static Task<Message> FailingHandler(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
         {
