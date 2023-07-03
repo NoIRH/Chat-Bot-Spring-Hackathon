@@ -6,6 +6,7 @@ using GameEngine.GameModels.CharDescription;
 using Microsoft.EntityFrameworkCore;
 using Telegram.Bot.Types;
 
+
 //using (ApplicationContext db = new ApplicationContext())
 //{
 //    db.Users.Add(new GeneralLibrary.BaseModels.User() { 
@@ -47,5 +48,12 @@ using (ApplicationContext db = new ApplicationContext())
 //}
 //Console.WriteLine("end");
 
-bool answer = Convert.ToBoolean("true");
-answer = !answer;
+HotOrCold hotOrCold = new HotOrCold();
+hotOrCold.Start();
+Console.WriteLine(hotOrCold.GameDescription);
+while (hotOrCold.IsWorked)
+{
+    Console.WriteLine("Загадайте число");
+    var gues = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine(hotOrCold.Guess(gues));
+}
