@@ -1,4 +1,5 @@
-﻿using GameEngine.GameModels.Characters;
+﻿using Controllers.Contexts;
+using GameEngine.GameModels.Characters;
 
 namespace GeneralLibrary.BaseModels
 {
@@ -28,5 +29,6 @@ namespace GeneralLibrary.BaseModels
 
         public Clan? Clan { get; set; }
         // NEED TO FINISH 
+        public GameContext? GameContext { get; set; }   
     }
 }

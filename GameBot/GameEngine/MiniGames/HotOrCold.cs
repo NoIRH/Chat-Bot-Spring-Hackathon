@@ -23,16 +23,15 @@ enum States
 }
 public class HotOrCold : MiniGame
 {
-	public bool IsWorked { get; set; }
 	public (int start, int end) Range { get; set; } = (0, 100);
 	public int CountSteps { get; set; }
 	
-    public string GameDescription = "Это игра горячо холодно. Загадывается число — вы должны его угадать. Вам будут даваться подсказки ";
     private int Value;
     public HotOrCold()
 	{
-
-	}
+        Name = "Горячо холодно)!";
+        GameDescription = "Это игра горячо холодно. Загадывается число — вы должны его угадать. Вам будут даваться подсказки ";
+    }
 	public void Start(int start = 0, int end = 100)
 	{
 		IsWorked = true;
