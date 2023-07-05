@@ -1,17 +1,12 @@
-﻿
-using GameEngine;
-using GameEngine.MiniGames;
-using GeneralLibrary.BaseModels;
-using System.Diagnostics.SymbolStore;
-using System.Net.Security;
+﻿using GameEngine.MiniGames;
 using User = GeneralLibrary.BaseModels.User;
 
 namespace Controllers.Controllers
 {
     public class GameController : BaseController
     {
-
         public GameController(DBController db) : base(db) { }
+
         public void StartCalculationGame(User user, int start = 0, int end = 100, int level = 1)
         {
             CalculationGame game = new CalculationGame();
@@ -48,6 +43,7 @@ namespace Controllers.Controllers
             }
             return " вы что-то сломали !_)";
         }
+
         public void StartHotOrCold(User user, int start = 0, int end = 100)
         {
             HotOrCold hotOrCold = new HotOrCold();
@@ -57,6 +53,7 @@ namespace Controllers.Controllers
             user.GameContext.IsMiniGame = true;
             user.GameContext.MiniGame = hotOrCold;
         }
+
         public string HotOrColdNext(User user, int variant)
         {
             if (user.GameContext is not null && user.GameContext.MiniGame is not null)

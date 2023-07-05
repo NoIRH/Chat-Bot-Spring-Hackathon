@@ -21,7 +21,9 @@ namespace Controllers.Controllers
         {
             _dbContext = context;
         }
-        public List<User> GetUsers() => _dbContext.Users.Include(u => u.Achievements).ToList();
+        //public List<User> GetUsers() => _dbContext.Users.Include(u => u.Achievements).ToList();
+        public List<User> GetUsers() => _dbContext.Users.Include(u => u.Achievements).Include(u => u.Hero).Include(u => u.Hero.Class).ToList();
+
         public List<Statistic> GetStatistics() => _dbContext.Statistics.ToList();
         public List<Rate> GetRates() => _dbContext.Rate.ToList();
         public List<Clan> GetClans() => _dbContext.Clans.Include(c => c.Users).ToList();
@@ -34,7 +36,7 @@ namespace Controllers.Controllers
         public List<GameEvent> GetGameEvents() => _dbContext.GameEvents.Include(b => b.Contexts).ToList();
         public List<WorkEvent> GetWorkEvents() => _dbContext.WorkEvents.Include(b => b.Contexts).ToList();
         public List<BaseCharacter> GetBaseCharacters() => _dbContext.Characters.ToList();
-        public List<Hero> GetHeroes() => _dbContext.Heroes.ToList();
+        public List<Hero> GetHeroes() => _dbContext.Heroes.Include(h => h.Class).ToList();
         public List<Enemy> GetEnemies() => _dbContext.Enemyes.ToList();
         public List<Fight> GetFights() => _dbContext.Fights.ToList();
         public List<Item> GetItems() => _dbContext.Items.Include(i => i.Inventories).ToList();

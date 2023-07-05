@@ -43,9 +43,13 @@ namespace BotClient.Scenarios
             {
                 return new GenerationHero { Controller = this };
             }
+            else if (scenarioId == (int)TypeScenario.SPECIAL)
+            {
+                return new SPECIALScenario { Controller = this };
+            }
             else
             {
-                return new BaseScenario { Controller = this };
+                return new StartScenario { Controller = this };
             }
         }
 

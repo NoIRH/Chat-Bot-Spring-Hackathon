@@ -66,6 +66,7 @@ public class UpdateHandler : IUpdateHandler
             "/request" => RequestContactAndLocation(_botClient, message, cancellationToken),
             "/inline_mode" => StartInlineQuery(_botClient, message, cancellationToken),
             "/throw" => FailingHandler(_botClient, message, cancellationToken),
+            "/return" => _scenarioController.RedirectToScenario(_botClient, message, cancellationToken, user),
             _ => _scenarioController.RedirectToScenario(_botClient, message, cancellationToken, user)
         };
         Message sentMessage = await action;
