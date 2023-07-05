@@ -6,7 +6,7 @@ namespace Controllers.Controllers
     public class GameController : BaseController
     {
         public GameController(DBController db) : base(db) { }
-
+        #region calculation game
         public void StartCalculationGame(User user, int start = 0, int end = 100, int level = 1)
         {
             CalculationGame game = new CalculationGame();
@@ -43,7 +43,8 @@ namespace Controllers.Controllers
             }
             return " вы что-то сломали !_)";
         }
-
+        #endregion
+        #region HotOrCold
         public void StartHotOrCold(User user, int start = 0, int end = 100)
         {
             HotOrCold hotOrCold = new HotOrCold();
@@ -65,6 +66,7 @@ namespace Controllers.Controllers
             }
             return " вы что-то сломали !_)";
         }
+        #endregion
 
     }
 }
