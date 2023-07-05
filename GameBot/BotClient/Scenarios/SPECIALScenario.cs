@@ -1,7 +1,6 @@
 ﻿using Controllers.Scenarios;
 using GameEngine.GameModels.CharDescription;
 using Telegram.Bot;
-using Telegram.Bot.Requests;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 using User = GeneralLibrary.BaseModels.User;
@@ -18,11 +17,16 @@ namespace BotClient.Scenarios
             C = 4,
             I = 8,
             A = 16,
-            L = 32,
-            Add = 128,
-            Dec = 256,
-            OK = 512,
-            Cancel = 1024
+            L = 32
+        }
+
+        private enum Operation
+        {
+            Change = 0,
+            Dec = 1,
+            Add = 2,
+            OK = 4,
+            Cancel = 8
         }
 
         public override async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user)
@@ -31,6 +35,7 @@ namespace BotClient.Scenarios
             {
                 user.Hero.StatusBase = new Status() { Strength = 5, Perception = 5, Endurance = 5, Charisma = 5, Intelligence = 5, Agility = 5, Luck = 5 };
                 var text = "Итак, давайте начнём распределение очков!";
+                Controller.UpdateDataDB();
                 await SendMessage(botClient, message, cancellationToken, text);
             }
 
@@ -41,60 +46,63 @@ namespace BotClient.Scenarios
                   {
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("S", "1_5"),
-                            InlineKeyboardButton.WithCallbackData("P", "2_5"),
-                            InlineKeyboardButton.WithCallbackData("E", "4_5"),
-                            InlineKeyboardButton.WithCallbackData("C", "8_5"),
-                            InlineKeyboardButton.WithCallbackData("I", "16_5"),
-                            InlineKeyboardButton.WithCallbackData("A", "32_5"),
-                            InlineKeyboardButton.WithCallbackData("L", "64_5")
+                            InlineKeyboardButton.WithCallbackData("S", "0_0_5"),
+                            InlineKeyboardButton.WithCallbackData("P", "0_1_5"),
+                            InlineKeyboardButton.WithCallbackData("E", "0_2_5"),
+                            InlineKeyboardButton.WithCallbackData("C", "0_4_5"),
+                            InlineKeyboardButton.WithCallbackData("I", "0_8_5"),
+                            InlineKeyboardButton.WithCallbackData("A", "0_16_5"),
+                            InlineKeyboardButton.WithCallbackData("L", "0_32_5")
                         },
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("-", "128_5"),
-                            InlineKeyboardButton.WithCallbackData("+", "256_5")
+                            InlineKeyboardButton.WithCallbackData("-", "1_0_5"),
+                            InlineKeyboardButton.WithCallbackData("+", "2_0_5")
                         },
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("Подтвердить", "512")
+                            InlineKeyboardButton.WithCallbackData("Подтвердить", "4_0_0")
                         }
                   });
                 user.CurrentScenarioStep += 1;
+                message.Text = "5";
                 var status = user.Hero.StatusBase;
                 return await SendMessage(botClient, message, cancellationToken,
-                    $"Всего доступно {message.Text} очков\n" +
-                    $"Strength (Сила — {status.Strength}\n" +
-                    $"Perception (Восприятие)  — {status.Perception}\n" +
-                    $"Endurance (Выносливость) — {status.Endurance}\n" +
-                    $"Charisma (Харизма) — {status.Charisma}\n" +
-                    $"Intelligence (Интеллект) — {status.Intelligence}\n" +
-                    $"Agility (Ловкость) — {status.Agility}\n" +
-                    $"Luck (Удача) — {status.Luck}", inlineKeyboard);
+                    $"\tВсего доступно {message.Text} очков\n" +
+                    $"\tStrength (Сила) — {status.Strength}\n" +
+                    $"\tPerception (Восприятие)  — {status.Perception}\n" +
+                    $"\tEndurance (Выносливость) — {status.Endurance}\n" +
+                    $"\tCharisma (Харизма) — {status.Charisma}\n" +
+                    $"\tIntelligence (Интеллект) — {status.Intelligence}\n" +
+                    $"\tAgility (Ловкость) — {status.Agility}\n" +
+                    $"\tLuck (Удача) — {status.Luck}", inlineKeyboard);
             }
             else if (user.CurrentScenarioStep == 1)
             {
-                var score = message.Text.Split("_")[1];
+                var data = message.Text.Split("_");
+                var score = data[2];
+                var item = data[1];
                 InlineKeyboardMarkup inlineKeyboard = new(
                   new[]
                   {
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("S", $"0_{score}"),
-                            InlineKeyboardButton.WithCallbackData("P", $"1_{score}"),
-                            InlineKeyboardButton.WithCallbackData("E", $"2_{score}"),
-                            InlineKeyboardButton.WithCallbackData("C", $"4_{score}"),
-                            InlineKeyboardButton.WithCallbackData("I", $"8_{score}"),
-                            InlineKeyboardButton.WithCallbackData("A", $"16_{score}"),
-                            InlineKeyboardButton.WithCallbackData("L", $"32_{score}")
+                            InlineKeyboardButton.WithCallbackData("S", $"0_0_{score}"),
+                            InlineKeyboardButton.WithCallbackData("P", $"0_1_{score}"),
+                            InlineKeyboardButton.WithCallbackData("E", $"0_2_{score}"),
+                            InlineKeyboardButton.WithCallbackData("C", $"0_4_{score}"),
+                            InlineKeyboardButton.WithCallbackData("I", $"0_8_{score}"),
+                            InlineKeyboardButton.WithCallbackData("A", $"0_16_{score}"),
+                            InlineKeyboardButton.WithCallbackData("L", $"0_32_{score}")
                         },
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("-", $"64_{score}"),
-                            InlineKeyboardButton.WithCallbackData("+", $"128_{score}")
+                            InlineKeyboardButton.WithCallbackData("-", $"1_{item}_{score}"),
+                            InlineKeyboardButton.WithCallbackData("+", $"2_{item}_{score}")
                         },
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("Подтвердить", "512")
+                            InlineKeyboardButton.WithCallbackData("Подтвердить", $"4_0_{score}")
                         }
                   });
                 var status = user.Hero.StatusBase;
@@ -116,8 +124,8 @@ namespace BotClient.Scenarios
                {
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData("Да", "512_0"),
-                        InlineKeyboardButton.WithCallbackData("Нет", "1024_0")
+                        InlineKeyboardButton.WithCallbackData("Да", "4_0_0"),
+                        InlineKeyboardButton.WithCallbackData("Нет", "8_0_0")
                     }
                });
                 Controller.UpdateDataDB();
@@ -125,6 +133,8 @@ namespace BotClient.Scenarios
             }
             else
             {
+                user.ScenarioId = (int)TypeScenario.Start;
+                user.CurrentScenarioStep = 0;
                 return await new StartScenario() { Controller = Controller }.Start(botClient, message, cancellationToken, user);
             }
         }
@@ -132,106 +142,101 @@ namespace BotClient.Scenarios
         public override void Solve(User user, CallbackQuery callbackQuery)
         {
             var data = callbackQuery.Data.Split("_");
-            var score = Convert.ToInt32(data[1]);
-            var item = Convert.ToInt32(data[0]);
-            switch (item)
+            var operation = Convert.ToInt32(data[0]);
+            var item = Convert.ToInt32(data[1]);
+            var score = Convert.ToInt32(data[2]);
+            if (operation == (int)Operation.Change)
             {
-                case (int)Description.S:
-                    callbackQuery.Message.Text = Description.S.ToString() + score;
-                    return;
-                case (int)Description.P:
-                    callbackQuery.Message.Text = Description.P.ToString() + score;
-                    return;
-                case (int)Description.E:
-                    callbackQuery.Message.Text = Description.E.ToString() + score;
-                    return;
-                case (int)Description.C:
-                    callbackQuery.Message.Text = Description.C.ToString() + score;
-                    return;
-                case (int)Description.I:
-                    callbackQuery.Message.Text = Description.I.ToString() + score;
-                    return;
-                case (int)Description.A:
-                    callbackQuery.Message.Text = Description.A.ToString() + score;
-                    return;
-                case (int)Description.L:
-                    callbackQuery.Message.Text = Description.L.ToString() + score;
-                    return;
-                case (int)Description.Add:
-                    score = Add(user.Hero.StatusBase, item, score);
-                    callbackQuery.Message.Text = item.ToString() + score;
-                    return;
-                case (int)Description.Dec:
-                    score = Decrease(user.Hero.StatusBase, item, score);
-                    callbackQuery.Message.Text = item.ToString() + score;
-                    return;
-                case (int)Description.OK:
-                    user.CurrentScenarioStep += 1;
-                    break;
-                case (int)Description.Cancel:
-                    user.CurrentScenarioStep -= 1;
-                    break;
+                return;
             }
+            else if (operation == (int)Operation.Add)
+            {
+                score = Add(user, item, score);
+            }
+            else if(operation == (int)Operation.Dec)
+            {
+                score = Decrease(user, item, score);
+            }
+            else if (operation == (int)Operation.OK)
+            {
+                user.CurrentScenarioStep += 1;
+            }
+            else if ((operation == (int)Operation.Cancel))
+            {
+                user.CurrentScenarioStep -= 1;
+            }
+            data[2] = score.ToString();
+            callbackQuery.Data = string.Join("_", data);
         }
 
-        private int Add(Status status, int item, int score)
-        {
-            if (score == 5) return 5;
-            switch (item)
-            {
-                case (int)Description.S:
-                    status.Strength += 1;
-                    break;
-                case (int)Description.P:
-                    status.Perception += 1;
-                    break;
-                case (int)Description.E:
-                    status.Endurance += 1;
-                    break;
-                case (int)Description.C:
-                    status.Charisma += 1;
-                    break;
-                case (int)Description.I:
-                    status.Intelligence += 1;
-                    break;
-                case (int)Description.A:
-                    status.Agility += 1;
-                    break;
-                case (int)Description.L:
-                    status.Luck += 1;
-                    break;
-            }
-            return score -= 1;
-        }
-
-        private int Decrease(Status status, int item, int score)
+        private int Add(User user, int item, int score)
         {
             if (score == 0) return 0;
-            switch (item)
+            var status = user.Hero.StatusBase;
+            if (item == (int)Description.S)
             {
-                case (int)Description.S:
-                    status.Strength -= 1;
-                    break;
-                case (int)Description.P:
-                    status.Perception -= 1;
-                    break;
-                case (int)Description.E:
-                    status.Endurance -= 1;
-                    break;
-                case (int)Description.C:
-                    status.Charisma -= 1;
-                    break;
-                case (int)Description.I:
-                    status.Intelligence -= 1;
-                    break;
-                case (int)Description.A:
-                    status.Agility -= 1;
-                    break;
-                case (int)Description.L:
-                    status.Luck -= 1;
-                    break;
+                status.Strength += 1;
             }
-            return score += 1;
+            else if (item == (int)Description.P)
+            {
+                status.Perception += 1;
+            }
+            else if (item == (int)Description.E)
+            {
+                status.Endurance += 1;
+            }
+            else if (item == (int)Description.C)
+            {
+                status.Charisma += 1;
+            }
+            else if (item == (int)Description.I)
+            {
+                status.Intelligence += 1;
+            }
+            else if (item == (int)Description.A)
+            {
+                status.Agility += 1;
+            }
+            else if (item == (int)Description.L)
+            {
+                status.Luck += 1;
+            }
+            return score - 1;
+        }
+
+        private int Decrease(User user, int item, int score)
+        {
+            if (score == 5) return 5;
+            var status = user.Hero.StatusBase;
+            if (item == (int)Description.S)
+            {
+                status.Strength -= 1;
+            }
+            else if (item == (int)Description.P)
+            {
+                status.Perception -= 1;
+            }
+            else if (item == (int)Description.E)
+            {
+                status.Endurance -= 1;
+            }
+            else if (item == (int)Description.C)
+            {
+                status.Charisma -= 1;
+            }   
+            else if (item == (int)Description.I)
+            {
+                status.Intelligence -= 1;
+            }
+            else if (item == (int)Description.A)
+            {
+                status.Agility -= 1;
+            }
+            else if (item == (int)Description.L)
+            {
+                status.Luck -= 1;
+            }
+            return score + 1;
         }
     }
 }

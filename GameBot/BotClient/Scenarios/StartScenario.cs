@@ -16,7 +16,7 @@ namespace Controllers.Scenarios
 
         public override async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user)
         {
-            Print(botClient, message, cancellationToken);
+            //Print(botClient, message, cancellationToken);
 
             if (user == null)
             {

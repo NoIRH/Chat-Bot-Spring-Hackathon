@@ -94,7 +94,7 @@ namespace BotClient.Scenarios
                 user.ScenarioId = (int)TypeScenario.SPECIAL;
                 user.CurrentScenarioStep = 0;
                 Controller.UpdateDataDB();
-                return await new SPECIALScenario().Start(botClient, message, cancellationToken, user); // if this throw exception, then everything is ok.
+                return await new SPECIALScenario() { Controller = Controller }.Start(botClient, message, cancellationToken, user); // if this throw exception, then everything is ok.
             }
         }
 

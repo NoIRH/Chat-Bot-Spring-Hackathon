@@ -22,7 +22,7 @@ namespace Controllers.Controllers
             _dbContext = context;
         }
         //public List<User> GetUsers() => _dbContext.Users.Include(u => u.Achievements).ToList();
-        public List<User> GetUsers() => _dbContext.Users.Include(u => u.Achievements).Include(u => u.Hero).Include(u => u.Hero.Class).ToList();
+        public List<User> GetUsers() => _dbContext.Users.Include(u => u.Achievements).Include(u => u.Hero).Include(u => u.Hero.Class).Include(u => u.Hero.StatusBase).ToList();
 
         public List<Statistic> GetStatistics() => _dbContext.Statistics.ToList();
         public List<Rate> GetRates() => _dbContext.Rate.ToList();
