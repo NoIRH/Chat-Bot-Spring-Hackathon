@@ -52,7 +52,8 @@ namespace Controllers.Scenarios
                     {
                         InlineKeyboardButton.WithCallbackData("Отправиться в данж", "2"),
                         InlineKeyboardButton.WithCallbackData("Вступить в бой", "3"),
-                        InlineKeyboardButton.WithCallbackData("Мини-игры", "4"),
+                        InlineKeyboardButton.WithCallbackData("Мини-игра (Горячо, холодно)", "4"),
+                        InlineKeyboardButton.WithCallbackData("Мини-игра (Счёты)", "5")
                     }
                });
                 return await SendMessage(botClient, message, cancellationToken, "Меню", inlineKeyboard);
@@ -70,6 +71,10 @@ namespace Controllers.Scenarios
                         break;
                     case 4:
                         user.ScenarioId = (int)TypeScenario.HotOrColdGame;
+                        user.CurrentScenarioStep = 0;
+                        break;
+                    case 5:
+                        user.ScenarioId = (int)TypeScenario.CalculationGame;
                         user.CurrentScenarioStep = 0;
                         break;
                 };

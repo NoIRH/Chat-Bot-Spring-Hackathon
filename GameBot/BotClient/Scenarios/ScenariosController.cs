@@ -56,6 +56,10 @@ namespace BotClient.Scenarios
             {
                 return new HotOrColdScenario { Controller = this, GameController = _gameController };
             }
+            else if (scenarioId == (int)TypeScenario.CalculationGame)
+            {
+                return new CalculationGameScenario { Controller = this, GameController = _gameController };
+            }
             else
             {
                 return new StartScenario { Controller = this };

@@ -9,5 +9,6 @@ namespace BotClient.Scenarios
         Help = 3,
         SPECIAL = 4,
         HotOrColdGame = 5,
+        CalculationGame = 6
     }
 }
