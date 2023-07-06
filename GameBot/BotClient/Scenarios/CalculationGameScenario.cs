@@ -17,9 +17,10 @@ namespace BotClient.Scenarios
             {
                 GameController.StartCalculationGame(user);
                 user.CurrentScenarioStep += 1;
-                return await SendMessage(botClient, message, cancellationToken, user.GameContext.MiniGame.GameDescription);
+                await SendMessage(botClient, message, cancellationToken, user.GameContext.MiniGame.GameDescription);
+                return await SendMessage(botClient, message, cancellationToken, "Введите Ok, чтобы начать!");
             }
-            else if (user.CurrentScenarioStep == 1)
+            else if (user.CurrentScenarioStep == 1 && user.GameContext.MiniGame.IsWorked)
             {
                 var data = GameController.CalculationGameNext(user);
                 var example = data.example;
@@ -44,13 +45,12 @@ namespace BotClient.Scenarios
                         InlineKeyboardButton.WithCallbackData($"{varinats[3]}", $"{varinats[0]}")
                     }
                });
-                if (!user.GameContext.MiniGame.IsWorked)
-                    user.CurrentScenarioStep += 1;
                 return await SendMessage(botClient, message, cancellationToken, example, inlineKeyboard);
             }
             else
             {
                 await SendMessage(botClient, message, cancellationToken, GameController.GetCalculationGameStatistic(user));
+                user.ScenarioId = (int)TypeScenario.Start;
                 user.CurrentScenarioStep = 0;
                 return await new StartScenario { Controller = Controller }.Start(botClient, message, cancellationToken, user, StartScenario.Options.Menu);
             }
