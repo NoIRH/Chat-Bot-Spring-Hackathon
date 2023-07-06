@@ -49,28 +49,28 @@ using (ApplicationContext db = new ApplicationContext())
 //}
 //Console.WriteLine("end");
 
-//HotOrCold hotOrCold = new HotOrCold();
-//hotOrCold.Start();
-//Console.WriteLine(hotOrCold.GameDescription);
-//while (hotOrCold.IsWorked)
-//{
-//    Console.WriteLine("Загадайте число");
-//    var gues = Convert.ToInt32(Console.ReadLine());
-//    Console.WriteLine(hotOrCold.Guess(gues));
-//}
-
-CalculationGame calculationGame = new CalculationGame();
-Console.WriteLine(calculationGame.GameDescription);
-calculationGame.Start(6);
-while (calculationGame.IsWorked)
+HotOrCold hotOrCold = new HotOrCold();
+hotOrCold.Start();
+Console.WriteLine(hotOrCold.GameDescription);
+while (hotOrCold.IsWorked)
 {
-    var e = calculationGame.GetNext();
-    Console.WriteLine(e.example);
-    foreach (var v in e.variants)
-        Console.WriteLine(v);
-    Console.Write("Введите ваш ответ: ");
-    var a = Convert.ToDouble(Console.ReadLine());
-    calculationGame.WriteAnswer(a);
+    Console.WriteLine("Загадайте число");
+    var gues = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine(hotOrCold.Guess(gues));
 }
-Console.WriteLine(calculationGame.ShowStatistics());
+
+//CalculationGame calculationGame = new CalculationGame();
+//Console.WriteLine(calculationGame.GameDescription);
+//calculationGame.Start(6);
+//while (calculationGame.IsWorked)
+//{
+//    var e = calculationGame.GetNext();
+//    Console.WriteLine(e.example);
+//    foreach (var v in e.variants)
+//        Console.WriteLine(v);
+//    Console.Write("Введите ваш ответ: ");
+//    var a = Convert.ToDouble(Console.ReadLine());
+//    calculationGame.WriteAnswer(a);
+//}
+//Console.WriteLine(calculationGame.ShowStatistics());
 

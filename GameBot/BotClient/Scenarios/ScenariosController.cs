@@ -9,7 +9,12 @@ namespace BotClient.Scenarios
 {
     public class ScenariosController : BaseController
     {
-        public ScenariosController(DBController dBController) : base(dBController) { }
+        private GameController _gameController;
+
+        public ScenariosController(DBController dBController) : base(dBController) 
+        {
+            _gameController = new GameController(_db);
+        }
 
         public async Task<Message> RedirectToScenario(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user)
         {
@@ -46,6 +51,10 @@ namespace BotClient.Scenarios
             else if (scenarioId == (int)TypeScenario.SPECIAL)
             {
                 return new SPECIALScenario { Controller = this };
+            }
+            else if (scenarioId == (int)TypeScenario.HotOrColdGame)
+            {
+                return new HotOrColdScenario { Controller = this, GameController = _gameController };
             }
             else
             {

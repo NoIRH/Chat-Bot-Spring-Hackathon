@@ -16,8 +16,6 @@ namespace Controllers.Scenarios
 
         public override async Task<Message> Start(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken, User user)
         {
-            //Print(botClient, message, cancellationToken);
-
             if (user == null)
             {
                 var textOfGreeting = "Добро пожаловать!\nВам обязательно нужно зарегистрироваться!";
@@ -62,14 +60,20 @@ namespace Controllers.Scenarios
             else
             {
                 var answer = Convert.ToInt32(message.Text);
-                return answer switch
+                switch (answer)
                 {
-                    1 => null,
-                    2 => null,
-                    3 => null,
-                    4 => null,
-                    _ => null
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        user.ScenarioId = (int)TypeScenario.HotOrColdGame;
+                        user.CurrentScenarioStep = 0;
+                        break;
                 };
+                return await Controller.RedirectToScenario(botClient, message, cancellationToken, user);
             }
         }
 
