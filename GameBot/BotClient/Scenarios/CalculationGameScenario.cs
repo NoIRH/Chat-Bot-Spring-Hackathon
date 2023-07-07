@@ -34,15 +34,15 @@ namespace BotClient.Scenarios
                     },
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData($"{varinats[1]}", $"{varinats[0]}")
+                        InlineKeyboardButton.WithCallbackData($"{varinats[1]}", $"{varinats[1]}")
                     },
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData($"{varinats[2]}", $"{varinats[0]}")
+                        InlineKeyboardButton.WithCallbackData($"{varinats[2]}", $"{varinats[2]}")
                     },
                     new []
                     {
-                        InlineKeyboardButton.WithCallbackData($"{varinats[3]}", $"{varinats[0]}")
+                        InlineKeyboardButton.WithCallbackData($"{varinats[3]}", $"{varinats[3]}")
                     }
                });
                 return await SendMessage(botClient, message, cancellationToken, example, inlineKeyboard);
@@ -52,6 +52,7 @@ namespace BotClient.Scenarios
                 await SendMessage(botClient, message, cancellationToken, GameController.GetCalculationGameStatistic(user));
                 user.ScenarioId = (int)TypeScenario.Start;
                 user.CurrentScenarioStep = 0;
+                Controller.UpdateDataDB();
                 return await new StartScenario { Controller = Controller }.Start(botClient, message, cancellationToken, user, StartScenario.Options.Menu);
             }
         }
